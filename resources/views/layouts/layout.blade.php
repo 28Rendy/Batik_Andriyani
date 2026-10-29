@@ -17,7 +17,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('asset/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="{{ asset('asset/vendor/jquery/jquery.min.js') }}"></script>
 
     <style>
         /* Kontras warna tajam untuk teks di Admin Panel (mencegah teks samar di background kuning/emas) */
@@ -165,7 +165,7 @@
                 {{-- <div style="background-color: rgb(69, 68, 68)" --}}
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseDataBarang"
                         data-toggle="collapse" data-target="#collapseDataBarang" aria-expanded="false"
                         aria-controls="collapseDataBarang">
                         <i class="fas fa-fw fa-folder-open"></i>
@@ -190,7 +190,7 @@
                 {{-- <div style="background-color: rgb(69, 68, 68)" --}}
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseKategoriBatik"
                         data-toggle="collapse" data-target="#collapseKategoriBatik" aria-expanded="false"
                         aria-controls="collapseKategoriBatik">
                         <i class="fas fa-fw fa-list-alt"></i>
@@ -218,7 +218,7 @@
                 {{-- <div style="background-color: rgb(69, 68, 68)" --}}
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapsePenjualan"
                         data-toggle="collapse" data-target="#collapsePenjualan" aria-expanded="false"
                         aria-controls="collapsePenjualan">
                         <i class="fas fa-fw fa-exchange-alt"></i>
@@ -245,7 +245,7 @@
                 {{-- <div style="background-color: rgb(69, 68, 68)" --}}
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseKeuangan"
                         data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="false"
                         aria-controls="collapseKeuangan">
                         <i class="fas fa-fw fa-wallet"></i>
@@ -284,7 +284,7 @@
             <li class="nav-item {{ $isCmsActive ? 'active' : '' }}">
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isCmsActive ? '' : 'collapsed' }}" href="#"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isCmsActive ? '' : 'collapsed' }}" href="#collapseCMS"
                         data-toggle="collapse" data-target="#collapseCMS" aria-expanded="{{ $isCmsActive ? 'true' : 'false' }}"
                         aria-controls="collapseCMS">
                         <i class="fas fa-fw fa-globe text-info"></i>
@@ -496,35 +496,35 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="asset/vendor/jquery/jquery.min.js"></script>
-    <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('asset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="asset/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('asset/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="asset/vendor/chart.js/Chart.min.js"></script>
-    <script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="asset/js/demo/chart-area-demo.js"></script>
-    <script src="asset/js/demo/chart-pie-demo.js"></script>
-    <script src="asset/js/demo/datatables-demo.js"></script>
+    <script src="{{ asset('asset/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('asset/js/demo/datatables-demo.js') }}"></script>
 
     <script>
-        // Fix sidebar accordion: hapus data-parent agar collapse lain tidak otomatis ditutup
-        // Izinkan multi-collapse terbuka sekaligus, tiap toggler toggle sendiri-sendiri
         $(document).ready(function () {
-            // Pastikan semua link menu (bukan toggler) bisa diklik bebas tanpa di-intercept accordion
-            $('.nav-link[href]').not('[data-toggle]').on('click', function (e) {
-                var href = $(this).attr('href');
-                if (href && href !== '#') {
-                    e.stopPropagation();
-                    window.location.href = href;
+            // Pastikan klik pada toggler collapse membuka/menutup submenu dengan mulus
+            $('[data-toggle="collapse"]').on('click', function (e) {
+                e.preventDefault();
+                var target = $(this).attr('data-target') || $(this).attr('href');
+                if (target && target.startsWith('#')) {
+                    $(target).collapse('toggle');
+                }
+            });
+
+            // Pastikan semua link menu (nav-link & collapse-item) selalu dapat diklik dan bernavigasi tanpa halangan
+            $('.sidebar a[href]').not('[data-toggle="collapse"]').not('[data-toggle="modal"]').on('click', function (e) {
+                var url = $(this).attr('href');
+                if (url && url !== '#' && !url.startsWith('javascript:')) {
+                    window.location.href = url;
                 }
             });
         });
