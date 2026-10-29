@@ -125,3 +125,4 @@ class PelangganController extends Controller
         return redirect()->route('pelanggan.dashboard')->with('success', 'Pendaftaran akun pelanggan berhasil! Selamat datang di Batik Andriyani.');
     }
 }
+

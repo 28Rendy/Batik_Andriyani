@@ -15,7 +15,7 @@
         <!-- Informasi Kontak Langsung -->
         <div class="col-lg-5">
             <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white h-100">
-                <span class="text-uppercase text-warning fw-bold small">Informasi Toko</span>
+                <span class="text-uppercase section-subtitle d-block mb-1">Informasi Toko</span>
                 <h3 class="font-serif fw-bold mb-4">Informasi Kontak</h3>
 
                 <div class="d-flex mb-4">
@@ -67,7 +67,7 @@
         <!-- FAQ Interaktif -->
         <div class="col-lg-7">
             <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white h-100">
-                <span class="text-uppercase text-warning fw-bold small">Tanya Jawab</span>
+                <span class="text-uppercase section-subtitle d-block mb-1">Tanya Jawab</span>
                 <h3 class="font-serif fw-bold mb-4">Frequently Asked Questions (FAQ)</h3>
 
                 <div class="accordion" id="accordionFaqPage">
@@ -93,3 +93,4 @@
     </div>
 </div>
 @endsection
+

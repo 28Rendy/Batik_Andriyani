@@ -13,7 +13,7 @@
 <div class="container py-5">
     <div class="row g-5 align-items-center mb-5">
         <div class="col-lg-6" data-aos="fade-right">
-            <span class="text-uppercase text-warning fw-bold small">Cerita & Identitas Kami</span>
+            <span class="text-uppercase section-subtitle d-block mb-1">Cerita & Identitas Kami</span>
             <h2 class="font-serif fw-bold display-6 mb-4">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</h2>
             <div class="text-secondary lh-lg mb-4" style="font-size: 16px;">
                 {!! nl2br(e(\App\Models\SiteSetting::getSetting('tentang_isi', \App\Models\SiteSetting::getSetting('deskripsi_toko')))) !!}
@@ -63,3 +63,4 @@
     </div>
 </div>
 @endsection
+

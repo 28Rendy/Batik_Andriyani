@@ -59,8 +59,8 @@
         <div class="row g-4 text-center">
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="p-3">
-                    <div class="d-inline-flex p-3 rounded-circle bg-light text-primary mb-3 shadow-sm">
-                        <i class="fas fa-feather-alt fs-2 text-warning"></i>
+                    <div class="d-inline-flex p-3 rounded-circle bg-light mb-3 shadow-sm" style="color: #8c5200;">
+                        <i class="fas fa-feather-alt fs-2"></i>
                     </div>
                     <h5 class="fw-bold">100% Batik Tulis Asli</h5>
                     <p class="small text-muted mb-0">Dikerjakan langsung oleh pengrajin batik terampil & berpengalaman.</p>
@@ -68,8 +68,8 @@
             </div>
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="p-3">
-                    <div class="d-inline-flex p-3 rounded-circle bg-light text-primary mb-3 shadow-sm">
-                        <i class="fas fa-certificate fs-2 text-warning"></i>
+                    <div class="d-inline-flex p-3 rounded-circle bg-light mb-3 shadow-sm" style="color: #8c5200;">
+                        <i class="fas fa-certificate fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Bahan Mori Premium</h5>
                     <p class="small text-muted mb-0">Kain mori halus, nyaman dipakai, awet dan tidak mudah pudar.</p>
@@ -77,8 +77,8 @@
             </div>
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="p-3">
-                    <div class="d-inline-flex p-3 rounded-circle bg-light text-primary mb-3 shadow-sm">
-                        <i class="fas fa-palette fs-2 text-warning"></i>
+                    <div class="d-inline-flex p-3 rounded-circle bg-light mb-3 shadow-sm" style="color: #8c5200;">
+                        <i class="fas fa-palette fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Bisa Pesan Custom</h5>
                     <p class="small text-muted mb-0">Melayani pesanan seragam batik custom motif dan logo instansi.</p>
@@ -86,8 +86,8 @@
             </div>
             <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="p-3">
-                    <div class="d-inline-flex p-3 rounded-circle bg-light text-primary mb-3 shadow-sm">
-                        <i class="fas fa-shipping-fast fs-2 text-warning"></i>
+                    <div class="d-inline-flex p-3 rounded-circle bg-light mb-3 shadow-sm" style="color: #8c5200;">
+                        <i class="fas fa-shipping-fast fs-2"></i>
                     </div>
                     <h5 class="fw-bold">Kirim Seluruh RI</h5>
                     <p class="small text-muted mb-0">Pengemasan aman, rapi dan bergaransi sampai ke alamat Anda.</p>
@@ -102,7 +102,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-end mb-4">
             <div>
-                <span class="text-uppercase text-warning fw-bold small">Koleksi Pilihan</span>
+                <span class="text-uppercase section-subtitle d-block mb-1">Koleksi Pilihan</span>
                 <h2 class="font-serif fw-bold mb-0">Produk Batik Unggulan</h2>
             </div>
             <a href="{{ route('frontend.produk') }}" class="btn btn-outline-dark rounded-pill px-4">
@@ -155,7 +155,7 @@
 <section class="py-5 bg-white">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="text-uppercase text-warning fw-bold small">Karya & Dokumentasi</span>
+            <span class="text-uppercase section-subtitle d-block mb-1">Karya & Dokumentasi</span>
             <h2 class="font-serif fw-bold">Galeri Batik Andriyani</h2>
             <p class="text-muted">Potret proses pembuatan, motif, dan koleksi istimewa kami</p>
         </div>
@@ -188,7 +188,7 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-end mb-4">
             <div>
-                <span class="text-uppercase text-warning fw-bold small">Artikel & Informasi</span>
+                <span class="text-uppercase section-subtitle d-block mb-1">Artikel & Informasi</span>
                 <h2 class="font-serif fw-bold mb-0">Berita & Edukasi Batik</h2>
             </div>
             <a href="{{ route('frontend.berita') }}" class="btn btn-outline-dark rounded-pill px-4">
@@ -234,7 +234,7 @@
 <section class="py-5 bg-white">
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="text-uppercase text-warning fw-bold small">Pusat Bantuan</span>
+            <span class="text-uppercase section-subtitle d-block mb-1">Pusat Bantuan</span>
             <h2 class="font-serif fw-bold">Pertanyaan yang Sering Diajukan (FAQ)</h2>
         </div>
 
@@ -275,3 +275,4 @@
 </section>
 
 @endsection
+

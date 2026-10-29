@@ -19,6 +19,43 @@
     <link href="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
+    <style>
+        /* Kontras warna tajam untuk teks di Admin Panel (mencegah teks samar di background kuning/emas) */
+        .badge-warning, .badge.bg-warning {
+            background-color: #ffc107 !important;
+            color: #111111 !important;
+            font-weight: 700 !important;
+            border: 1px solid #d39e00;
+        }
+        .btn-warning {
+            background-color: #ffc107 !important;
+            border-color: #e0a800 !important;
+            color: #111111 !important;
+            font-weight: 700 !important;
+        }
+        .btn-warning:hover {
+            background-color: #e0a800 !important;
+            color: #000000 !important;
+        }
+        .btn-outline-warning {
+            border-color: #d39e00 !important;
+            color: #724c00 !important;
+            font-weight: 700 !important;
+            background-color: #fffbf0;
+        }
+        .btn-outline-warning:hover, .btn-outline-warning.active {
+            background-color: #ffc107 !important;
+            color: #111111 !important;
+        }
+        .text-warning {
+            color: #8c5200 !important; /* amber/emas tua pekat yang kontras tajam di atas background putih/terang */
+            font-weight: 700;
+        }
+        .collapse-item i {
+            width: 18px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -186,53 +223,44 @@
 
             <!-- Kelola Website (CMS) -->
             @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
-            <li class="nav-item {{ Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*') ? 'active' : '' }}">
+            @php
+                $isCmsActive = Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*');
+            @endphp
+            <li class="nav-item {{ $isCmsActive ? 'active' : '' }}">
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
-                        data-toggle="collapse" data-target="#collapseCMS" aria-expanded="false"
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isCmsActive ? '' : 'collapsed' }}" href="#"
+                        data-toggle="collapse" data-target="#collapseCMS" aria-expanded="{{ $isCmsActive ? 'true' : 'false' }}"
                         aria-controls="collapseCMS">
                         <i class="fas fa-fw fa-globe text-info"></i>
                         <b><span class="text-light">Kelola Website (CMS)</span></b>
                     </a>
                 </div>
                 <div id="collapseCMS"
-                    class="collapse {{ Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*') ? 'show' : '' }}"
+                    class="collapse {{ $isCmsActive ? 'show' : '' }}"
                     aria-labelledby="headingCMS" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/admin/site-settings') }}"> Identitas Toko & Kontak</a>
-                        <a class="collapse-item {{ Request::is('admin/hero-slider*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/admin/hero-slider') }}"> Hero Slider (Banner)</a>
-                        <a class="collapse-item {{ Request::is('admin/galeri*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/admin/galeri') }}"> Galeri Foto</a>
-                        <a class="collapse-item {{ Request::is('admin/faq*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/admin/faq') }}"> Kelola FAQ</a>
-                        <a class="collapse-item {{ Request::is('berita*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/berita') }}"> Berita & Artikel</a>
+                        <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'bg-secondary text-white' : '' }}"
+                            href="{{ url('/admin/site-settings') }}"><i class="fas fa-store mr-1"></i> Identitas Toko & Kontak</a>
+                        <a class="collapse-item {{ Request::is('admin/hero-slider*') ? 'bg-secondary text-white' : '' }}"
+                            href="{{ url('/admin/hero-slider') }}"><i class="fas fa-images mr-1"></i> Hero Slider (Banner)</a>
+                        <a class="collapse-item {{ Request::is('admin/galeri*') ? 'bg-secondary text-white' : '' }}"
+                            href="{{ url('/admin/galeri') }}"><i class="fas fa-camera mr-1"></i> Galeri Foto</a>
+                        <a class="collapse-item {{ Request::is('admin/faq*') ? 'bg-secondary text-white' : '' }}"
+                            href="{{ url('/admin/faq') }}"><i class="fas fa-question-circle mr-1"></i> Kelola FAQ</a>
+                        <a class="collapse-item {{ Request::is('berita*') ? 'bg-secondary text-white' : '' }}"
+                            href="{{ url('/berita') }}"><i class="fas fa-newspaper mr-1"></i> Berita & Artikel</a>
+                        <hr class="my-1">
+                        <a class="collapse-item text-success font-weight-bold"
+                            href="{{ url('/') }}" target="_blank"><i class="fas fa-external-link-alt text-success mr-1"></i> Lihat Website Publik</a>
                     </div>
                 </div>
             </li>
             @endif
 
-            <!-- Lihat Website Publik -->
-            <li class="nav-item">
-                <div style="background-color: rgba(40, 167, 69, 0.6)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
-                        href="{{ url('/') }}" target="_blank">
-                        <i class="fas fa-fw fa-external-link-alt text-white"></i>
-                        <b><span class="text-white">Lihat Website Publik</span></b>
-                    </a>
-                </div>
-            </li>
-
-            <!-- Laporan -->
-                   
-
             <!-- Laporan -->
             @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
-            <li class="nav-item {{ Request::is('laporan/index') ? 'active' : '' }}">
+            <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"

@@ -24,3 +24,4 @@ class IsPelanggan
         return redirect()->route('login')->with('error', 'Akses khusus pelanggan.');
     }
 }
+

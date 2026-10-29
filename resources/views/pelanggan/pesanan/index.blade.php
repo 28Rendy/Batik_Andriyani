@@ -37,7 +37,7 @@
                         <td class="text-center">{{ $p->jumlah }}</td>
                         <td class="fw-bold text-primary">Rp {{ number_format($p->total, 0, ',', '.') }}</td>
                         <td>
-                            <span class="badge bg-{{ $p->statusBadgeClass() }} px-3 py-2 rounded-pill">
+                            <span class="badge bg-{{ $p->statusBadgeClass() }} {{ $p->status_pesanan == 'pending' ? 'text-dark' : '' }} px-3 py-2 rounded-pill font-weight-bold">
                                 {{ strtoupper($p->status_pesanan) }}
                             </span>
                         </td>
@@ -72,3 +72,4 @@
     </div>
 </div>
 @endsection
+

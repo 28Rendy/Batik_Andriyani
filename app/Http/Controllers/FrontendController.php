@@ -165,3 +165,4 @@ class FrontendController extends Controller
         return redirect()->route('pelanggan.pesanan.detail', $pesanan->id)->with('success', 'Pesanan Anda berhasil dibuat! Admin kami akan segera memprosesnya.');
     }
 }
+

@@ -63,6 +63,31 @@
             background-color: #5d4037;
             color: #fff;
         }
+
+        /* Kontras Tinggi untuk teks & background kuning/emas di Portal Pelanggan */
+        .text-warning {
+            color: #8c5200 !important; /* warna amber tua pekat, sangat kontras di background putih/krem */
+            font-weight: 700;
+        }
+
+        .btn-warning {
+            background-color: #f5af19 !important;
+            border-color: #e09e0f !important;
+            color: #111111 !important;
+            font-weight: 700 !important;
+        }
+
+        .btn-warning:hover {
+            background-color: #e09e0f !important;
+            color: #000000 !important;
+        }
+
+        .badge.bg-warning, .badge-warning {
+            background-color: #ffc107 !important;
+            color: #111111 !important;
+            font-weight: 700 !important;
+            border: 1px solid #d39e00;
+        }
     </style>
     @yield('styles')
 </head>
@@ -154,3 +179,4 @@
     @yield('scripts')
 </body>
 </html>
+

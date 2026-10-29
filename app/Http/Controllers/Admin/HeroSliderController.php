@@ -86,3 +86,4 @@ class HeroSliderController extends Controller
         return redirect()->route('admin.hero-slider.index')->with('success', 'Banner slider berhasil dihapus!');
     }
 }
+

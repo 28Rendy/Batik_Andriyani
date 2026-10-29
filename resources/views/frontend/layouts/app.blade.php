@@ -32,14 +32,41 @@
             --primary-color: #795548;
             --primary-dark: #4e342e;
             --accent-gold: #c59b27;
+            --accent-dark-gold: #8d5b28;
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
             font-family: var(--font-sans);
-            color: #333333;
+            color: #2b2b2b;
             background-color: #faf8f5;
+        }
+
+        /* Kontras Tinggi untuk teks & background kuning/emas di Frontend */
+        .text-warning, .section-subtitle {
+            color: #8c5200 !important; /* warna cokelat keemasan tua pekat, kontras tinggi & jelas terbaca */
+            font-weight: 700 !important;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-warning {
+            background-color: #f5af19 !important;
+            border-color: #e09e0f !important;
+            color: #111111 !important; /* teks hitam pekat */
+            font-weight: 700 !important;
+        }
+
+        .btn-warning:hover {
+            background-color: #e09e0f !important;
+            color: #000000 !important;
+        }
+
+        .badge.bg-warning, .badge-warning {
+            background-color: #ffc107 !important;
+            color: #111111 !important; /* teks hitam pekat di atas background emas */
+            font-weight: 700 !important;
+            border: 1px solid #d39e00;
         }
 
         h1, h2, h3, h4, .font-serif {

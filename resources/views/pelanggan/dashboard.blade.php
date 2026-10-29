@@ -24,9 +24,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <span class="text-muted small font-weight-bold d-block">SEDANG DIPROSES</span>
-                    <h2 class="fw-bold mb-0 mt-1 text-warning">{{ $pesananDiproses }}</h2>
+                    <h2 class="fw-bold mb-0 mt-1" style="color: #8c5200;">{{ $pesananDiproses }}</h2>
                 </div>
-                <div class="p-3 bg-light rounded-circle text-warning">
+                <div class="p-3 bg-light rounded-circle" style="color: #8c5200;">
                     <i class="fas fa-spinner fs-3"></i>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                         <td>{{ $p->nama_produk }} ({{ $p->jumlah }} pcs)</td>
                         <td class="fw-bold">Rp {{ number_format($p->total, 0, ',', '.') }}</td>
                         <td>
-                            <span class="badge bg-{{ $p->statusBadgeClass() }} px-2 py-1">
+                            <span class="badge bg-{{ $p->statusBadgeClass() }} {{ $p->status_pesanan == 'pending' ? 'text-dark' : '' }} px-2 py-1 font-weight-bold">
                                 {{ strtoupper($p->status_pesanan) }}
                             </span>
                         </td>
@@ -109,3 +109,4 @@
     </div>
 </div>
 @endsection
+

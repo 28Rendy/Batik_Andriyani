@@ -5,11 +5,11 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Pesanan Pelanggan</h1>
         <div class="btn-group">
-            <a href="{{ route('admin.pesanan.index') }}" class="btn btn-sm {{ !$status ? 'btn-primary' : 'btn-outline-primary' }}">Semua</a>
-            <a href="{{ route('admin.pesanan.index', ['status' => 'pending']) }}" class="btn btn-sm {{ $status == 'pending' ? 'btn-warning' : 'btn-outline-warning' }}">Pending</a>
-            <a href="{{ route('admin.pesanan.index', ['status' => 'diproses']) }}" class="btn btn-sm {{ $status == 'diproses' ? 'btn-info' : 'btn-outline-info' }}">Diproses</a>
-            <a href="{{ route('admin.pesanan.index', ['status' => 'selesai']) }}" class="btn btn-sm {{ $status == 'selesai' ? 'btn-success' : 'btn-outline-success' }}">Selesai</a>
-            <a href="{{ route('admin.pesanan.index', ['status' => 'dibatalkan']) }}" class="btn btn-sm {{ $status == 'dibatalkan' ? 'btn-danger' : 'btn-outline-danger' }}">Dibatalkan</a>
+            <a href="{{ route('admin.pesanan.index') }}" class="btn btn-sm {{ !$status ? 'btn-primary' : 'btn-outline-primary' }} font-weight-bold">Semua</a>
+            <a href="{{ route('admin.pesanan.index', ['status' => 'pending']) }}" class="btn btn-sm {{ $status == 'pending' ? 'btn-warning font-weight-bold text-dark' : 'btn-outline-warning' }}">Pending</a>
+            <a href="{{ route('admin.pesanan.index', ['status' => 'diproses']) }}" class="btn btn-sm {{ $status == 'diproses' ? 'btn-info font-weight-bold' : 'btn-outline-info' }}">Diproses</a>
+            <a href="{{ route('admin.pesanan.index', ['status' => 'selesai']) }}" class="btn btn-sm {{ $status == 'selesai' ? 'btn-success font-weight-bold' : 'btn-outline-success' }}">Selesai</a>
+            <a href="{{ route('admin.pesanan.index', ['status' => 'dibatalkan']) }}" class="btn btn-sm {{ $status == 'dibatalkan' ? 'btn-danger font-weight-bold' : 'btn-outline-danger' }}">Dibatalkan</a>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
                                 <td class="text-center">{{ $p->jumlah }}</td>
                                 <td class="font-weight-bold text-right">Rp {{ number_format($p->total, 0, ',', '.') }}</td>
                                 <td class="text-center">
-                                    <span class="badge badge-{{ $p->statusBadgeClass() }} px-2 py-1">
+                                    <span class="badge badge-{{ $p->statusBadgeClass() }} {{ $p->status_pesanan == 'pending' ? 'text-dark' : '' }} px-2 py-1 font-weight-bold">
                                         {{ strtoupper($p->status_pesanan) }}
                                     </span>
                                 </td>
@@ -86,3 +86,4 @@
     </div>
 </div>
 @endsection
+
