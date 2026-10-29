@@ -88,22 +88,29 @@
         }
 
         .btn-auth-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
             background: linear-gradient(135deg, #795548, #5d4037);
             color: #fff !important;
-            padding: 8px 22px;
-            border-radius: 25px;
+            padding: 7px 18px;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13.5px;
+            line-height: 1.2;
             border: none;
-            box-shadow: 0 4px 10px rgba(121, 85, 72, 0.3);
+            box-shadow: 0 2px 8px rgba(121, 85, 72, 0.25);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
         }
 
         .btn-auth-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(121, 85, 72, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(121, 85, 72, 0.35);
             color: #fff !important;
+            background: linear-gradient(135deg, #6d4c41, #4e342e);
         }
 
         .floating-wa {
@@ -211,15 +218,15 @@
             </nav>
 
             <!-- Autentikasi Tombol -->
-            <div class="d-flex align-items-center gap-2">
+            <div class="d-flex align-items-center ms-3 flex-shrink-0">
                 @guest
                     <a class="btn-auth-primary" href="{{ route('login') }}">
-                        <i class="fas fa-sign-in-alt me-1"></i> Masuk / Daftar
+                        <i class="fas fa-sign-in-alt me-1.5"></i> Masuk
                     </a>
                 @else
                     @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN', 'STAFF']) && Auth::user()->tipe_akun !== 'pelanggan')
                         <a class="btn-auth-primary" href="{{ url('/home') }}">
-                            <i class="fas fa-tachometer-alt me-1"></i> Panel Admin
+                            <i class="fas fa-tachometer-alt me-1.5"></i> Panel Admin
                         </a>
                     @else
                         <div class="dropdown">
@@ -329,3 +336,4 @@
     @yield('scripts')
 </body>
 </html>
+
