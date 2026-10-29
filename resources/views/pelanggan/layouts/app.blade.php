@@ -184,7 +184,7 @@
     </div>
 
     <!-- Script Bootstrap -->
-    <script src="{{ asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('asset/vendor/bootstrap/js/Groovin/bootstrap.bundle.min.js') }}"></script>
     @yield('scripts')
 </body>
 </html>

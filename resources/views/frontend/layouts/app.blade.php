@@ -422,7 +422,7 @@
     </footer>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('asset/vendor/bootstrap/js/Groovin/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('asset/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/swiper/swiper-bundle.min.js') }}"></script>
