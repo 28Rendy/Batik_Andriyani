@@ -28,6 +28,10 @@
     <link href="{{ asset('asset/css/main.css') }}" rel="stylesheet">
 
     <style>
+        /* =====================================================
+           OVERRIDE CSS VARIABLES main.css
+           Semua warna di-override di root agar tidak perlu !important berulang
+           ===================================================== */
         :root {
             --primary-color: #795548;
             --primary-dark: #4e342e;
@@ -35,6 +39,19 @@
             --accent-dark-gold: #8d5b28;
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+            /* Override variabel main.css agar hover nav tidak jadi putih */
+            --nav-color: #3e2723;
+            --nav-hover-color: #3e2723;           /* FIX #1: hover teks tetap cokelat tua, BUKAN putih */
+            --nav-mobile-background-color: #ffffff;
+            --nav-dropdown-background-color: #ffffff;
+            --nav-dropdown-color: #3e2723;
+            --nav-dropdown-hover-color: #795548;
+
+            /* Override warna default teks & background */
+            --default-color: #2b2b2b;
+            --heading-color: #1a0f0a;
+            --background-color: #faf8f5;          /* FIX #2: background bukan hitam */
         }
 
         body {
@@ -97,8 +114,9 @@
             gap: 8px;
         }
 
-        .navmenu a {
-            color: #444;
+        .navmenu a,
+        .navmenu a:focus {
+            color: #3e2723 !important;
             font-weight: 500;
             font-size: 15px;
             padding: 8px 16px;
@@ -107,11 +125,22 @@
             text-decoration: none;
         }
 
+        /* Perbaikan: Saat hover teks tetap cokelat tua pekat, tidak menjadi putih */
         .navmenu a:hover,
-        .navmenu a.active {
-            color: var(--primary-dark);
-            background-color: #f3ece4;
-            font-weight: 600;
+        .navmenu li:hover > a,
+        .navmenu a.active,
+        .navmenu .active,
+        .navmenu .active:focus {
+            color: #3e2723 !important;
+            background-color: #f3ece4 !important;
+            font-weight: 700 !important;
+        }
+
+        /* FIX #1 ekstra: garis bawah animasi dari main.css pakai warna batik */
+        .navmenu a:hover:before,
+        .navmenu li:hover > a:before,
+        .navmenu .active:before {
+            background-color: #795548 !important;
         }
 
         .btn-auth-primary {
@@ -164,38 +193,63 @@
             color: #fff;
         }
 
+        /* Perbaikan: Footer teks terang kontras di atas cokelat tua */
         .footer {
             background: #2b211b;
-            color: #e0d7d0;
+            background-color: #2b211b !important;
+            color: #f0e6da !important;
             padding: 60px 0 30px 0;
             margin-top: 60px;
         }
 
         .footer h4 {
-            color: #fff;
+            color: #ffffff !important;
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 20px;
         }
 
+        .footer p,
+        .footer span,
+        .footer li,
+        .footer .text-muted,
+        .footer div {
+            color: #ded6cf !important; /* warna krem terang terbaca jelas */
+        }
+
         .footer a {
-            color: #c9bfb8;
+            color: #f5ece4 !important;
             text-decoration: none;
             transition: color 0.2s;
         }
 
         .footer a:hover {
-            color: #f7ca50;
+            color: #ffc107 !important;
         }
 
+        /* Perbaikan: Judul banner halaman wajib putih bersih */
         .page-header-banner {
-            background: linear-gradient(rgba(43, 33, 27, 0.8), rgba(43, 33, 27, 0.8)), url('{{ asset("asset/img/slide1.jpg") }}') center/cover;
-            padding: 80px 0 50px 0;
-            color: #fff;
+            background: linear-gradient(rgba(35, 25, 20, 0.85), rgba(35, 25, 20, 0.9)), url('{{ asset("asset/img/slide1.jpg") }}') center/cover no-repeat;
+            padding: 85px 0 55px 0;
+            color: #ffffff !important;
             text-align: center;
             margin-top: 70px;
         }
 
+        .page-header-banner h1,
+        .page-header-banner h2,
+        .page-header-banner .display-5 {
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .page-header-banner p,
+        .page-header-banner .lead,
+        .page-header-banner .text-white-50 {
+            color: #f5ede4 !important;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.6);
+        }
         .card-product {
             border: none;
             border-radius: 12px;
@@ -256,22 +310,31 @@
                             <i class="fas fa-tachometer-alt me-1.5"></i> Panel Admin
                         </a>
                     @else
-                        <div class="dropdown">
-                            <button class="btn btn-outline-dark dropdown-toggle rounded-pill px-3 py-1 font-weight-bold" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-circle me-1 text-primary"></i> {{ Str::limit(Auth::user()->nama, 12) }}
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
-                                <li><a class="dropdown-item" href="{{ route('pelanggan.dashboard') }}"><i class="fas fa-home me-2"></i> Dashboard Pelanggan</a></li>
-                                <li><a class="dropdown-item" href="{{ route('pelanggan.pesanan') }}"><i class="fas fa-shopping-bag me-2"></i> Riwayat Pesanan</a></li>
-                                <li><a class="dropdown-item" href="{{ route('pelanggan.profil') }}"><i class="fas fa-user-cog me-2"></i> Pengaturan Akun</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt me-2"></i> Keluar</button>
-                                    </form>
-                                </li>
-                            </ul>
+                        <div class="d-flex align-items-center gap-2">
+                            <a class="btn btn-warning rounded-pill px-3 py-1 font-weight-bold shadow-sm text-dark d-flex align-items-center" href="{{ route('pelanggan.dashboard') }}">
+                                <i class="fas fa-columns me-1.5"></i> Dashboard Pelanggan
+                            </a>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle rounded-pill px-2.5 py-1 font-weight-bold" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if (Auth::user()->foto && file_exists(public_path('photos/' . Auth::user()->foto)))
+                                        <img src="{{ asset('photos/' . Auth::user()->foto) }}" class="rounded-circle me-1" style="width: 24px; height: 24px; object-fit: cover;">
+                                    @else
+                                        <i class="fas fa-user-circle me-1"></i>
+                                    @endif
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userMenu">
+                                    <li><a class="dropdown-item" href="{{ route('pelanggan.dashboard') }}"><i class="fas fa-home me-2"></i> Dashboard Pelanggan</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pelanggan.pesanan') }}"><i class="fas fa-shopping-bag me-2"></i> Riwayat Pesanan</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('pelanggan.profil') }}"><i class="fas fa-user-cog me-2"></i> Pengaturan Akun</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-danger"><i class="fas fa-sign-out-alt me-2"></i> Keluar</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     @endif
                 @endguest

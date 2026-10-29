@@ -55,6 +55,61 @@
             width: 18px;
             text-align: center;
         }
+
+        /* Pastikan form input & card di Admin Panel selalu putih bersih dengan teks hitam pekat */
+        .card {
+            background-color: #ffffff !important;
+        }
+        .card-body {
+            background-color: #ffffff !important;
+            color: #212529 !important;
+        }
+        .form-control, input.form-control, textarea.form-control, select.form-control {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+            border: 1px solid #c5bba8 !important;
+            font-size: 14px !important;
+        }
+        .form-control:focus {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border-color: #795548 !important;
+            box-shadow: 0 0 0 0.2rem rgba(121, 85, 72, 0.2) !important;
+        }
+        /* Perbaiki placeholder agar abu-abu ringan, bukan ikut warna krem */
+        .form-control::placeholder {
+            color: #999 !important;
+            opacity: 1;
+        }
+        /* Override native input tag (tidak pakai class form-control) */
+        input[type="text"]:not(.form-control),
+        input[type="email"]:not(.form-control),
+        input[type="number"]:not(.form-control),
+        input[type="password"]:not(.form-control),
+        input[type="tel"]:not(.form-control) {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+        }
+        /* Card header */
+        .card-header {
+            background-color: #f8f3ec !important;
+            color: #2b211b !important;
+            border-bottom: 2px solid #d4c4a8 !important;
+            font-weight: 700 !important;
+        }
+        /* Teks sub-menu collapse sidebar agar terbaca */
+        .collapse-inner .collapse-item {
+            color: #2b211b !important;
+            font-weight: 500;
+        }
+        .collapse-inner .collapse-item:hover,
+        .collapse-inner .collapse-item.active {
+            background-color: #e8dfd4 !important;
+            color: #1a0f0a !important;
+        }
+        label, strong {
+            color: #2b211b !important;
+        }
     </style>
 </head>
 
@@ -119,7 +174,7 @@
                 </div>
                 <div id="collapseDataBarang"
                     class="collapse {{ Request::is('Sjadi') || Request::is('Psendiri') ? 'show' : '' }}"
-                    aria-labelledby="headingDataBarang" data-parent="#accordionSidebar">
+                    aria-labelledby="headingDataBarang">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('Sjadi') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
                             href="{{ url('/Sjadi') }}"> Setengah Jadi</a>
@@ -144,7 +199,7 @@
                 </div>
                 <div id="collapseKategoriBatik"
                     class="collapse {{ Request::is('motif') || Request::is('Jkain') || Request::is('ukuran') ? 'show' : '' }}"
-                    aria-labelledby="headingKategoriBatik" data-parent="#accordionSidebar">
+                    aria-labelledby="headingKategoriBatik">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('motif') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
                             href="{{ url('/motif') }}">Motif</a>
@@ -172,7 +227,7 @@
                 </div>
                 <div style="margin-bottom: 7px" id="collapsePenjualan"
                     class="collapse {{ Request::is('psetengah') || Request::is('ppsendiri') ? 'show' : '' }}"
-                    aria-labelledby="headingPenjualan" data-parent="#accordionSidebar">
+                    aria-labelledby="headingPenjualan">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('psetengah') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
                             href="{{ url('/psetengah') }}">
@@ -198,7 +253,7 @@
                     </a>
                 </div>
                 <div id="collapseKeuangan" class="collapse {{ Request::is('pengeluaran') ? 'show' : '' }}"
-                    aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
+                    aria-labelledby="headingKeuangan">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('pengeluaran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
                             href="{{ url('/pengeluaran') }}">
@@ -238,7 +293,7 @@
                 </div>
                 <div id="collapseCMS"
                     class="collapse {{ $isCmsActive ? 'show' : '' }}"
-                    aria-labelledby="headingCMS" data-parent="#accordionSidebar">
+                    aria-labelledby="headingCMS">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'bg-secondary text-white' : '' }}"
                             href="{{ url('/admin/site-settings') }}"><i class="fas fa-store mr-1"></i> Identitas Toko & Kontak</a>
@@ -459,6 +514,21 @@
     <script src="asset/js/demo/chart-area-demo.js"></script>
     <script src="asset/js/demo/chart-pie-demo.js"></script>
     <script src="asset/js/demo/datatables-demo.js"></script>
+
+    <script>
+        // Fix sidebar accordion: hapus data-parent agar collapse lain tidak otomatis ditutup
+        // Izinkan multi-collapse terbuka sekaligus, tiap toggler toggle sendiri-sendiri
+        $(document).ready(function () {
+            // Pastikan semua link menu (bukan toggler) bisa diklik bebas tanpa di-intercept accordion
+            $('.nav-link[href]').not('[data-toggle]').on('click', function (e) {
+                var href = $(this).attr('href');
+                if (href && href !== '#') {
+                    e.stopPropagation();
+                    window.location.href = href;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

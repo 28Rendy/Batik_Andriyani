@@ -19,11 +19,28 @@
         </div>
     @endif
 
-    <form action="{{ route('pelanggan.profil.update') }}" method="POST">
+    <form action="{{ route('pelanggan.profil.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="row g-3">
+            <div class="col-12 mb-3">
+                <label class="form-label small fw-bold d-block">Foto Profil Akun</label>
+                <div class="d-flex align-items-center gap-3">
+                    <div style="width: 80px; height: 80px; flex-shrink: 0;" class="rounded-circle overflow-hidden bg-light border shadow-sm d-flex align-items-center justify-content-center">
+                        @if ($user->foto && file_exists(public_path('photos/' . $user->foto)))
+                            <img src="{{ asset('photos/' . $user->foto) }}" alt="{{ $user->nama }}" class="w-100 h-100" style="object-fit: cover;">
+                        @else
+                            <i class="fas fa-user fa-2x text-muted"></i>
+                        @endif
+                    </div>
+                    <div>
+                        <input type="file" name="foto" class="form-control form-control-sm" accept="image/*">
+                        <small class="text-muted d-block mt-1">Format: JPG, PNG, WEBP. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah foto.</small>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-6">
                 <label class="form-label small fw-bold">Nama Lengkap *</label>
                 <input type="text" name="nama" class="form-control" value="{{ old('nama', $user->nama) }}" required>

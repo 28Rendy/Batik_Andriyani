@@ -67,6 +67,7 @@ class PelangganController extends Controller
             'nama' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'address' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
             'password' => 'nullable|string|min:6|confirmed',
         ]);
 
@@ -75,6 +76,13 @@ class PelangganController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
         ];
+
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $imageName = 'user_' . $user->id . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('photos'), $imageName);
+            $data['foto'] = $imageName;
+        }
 
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);

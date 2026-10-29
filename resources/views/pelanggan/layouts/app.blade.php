@@ -121,11 +121,20 @@
             <div class="col-lg-3">
                 <div class="customer-sidebar mb-4">
                     <div class="text-center pb-3 mb-3 border-bottom">
-                        <div class="d-inline-flex p-3 rounded-circle bg-light text-primary mb-2">
-                            <i class="fas fa-user-circle fa-3x text-secondary"></i>
+                        <div class="mx-auto mb-2 position-relative" style="width: 86px; height: 86px;">
+                            <div class="w-100 h-100 rounded-circle overflow-hidden bg-light border shadow-sm d-flex align-items-center justify-content-center">
+                                @if (Auth::user()->foto && file_exists(public_path('photos/' . Auth::user()->foto)))
+                                    <img src="{{ asset('photos/' . Auth::user()->foto) }}" alt="{{ Auth::user()->nama }}" class="w-100 h-100" style="object-fit: cover;">
+                                @else
+                                    <i class="fas fa-user-circle fa-4x text-secondary"></i>
+                                @endif
+                            </div>
+                            <a href="{{ route('pelanggan.profil') }}" class="position-absolute bottom-0 end-0 bg-warning text-dark rounded-circle p-1 shadow-sm small" title="Ganti Foto Profil" style="width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 11px;">
+                                <i class="fas fa-camera"></i>
+                            </a>
                         </div>
-                        <h6 class="fw-bold mb-0">{{ Auth::user()->nama }}</h6>
-                        <small class="text-muted">{{ Auth::user()->email }}</small>
+                        <h6 class="fw-bold mb-0 text-dark">{{ Auth::user()->nama }}</h6>
+                        <small class="text-muted d-block">{{ Auth::user()->email }}</small>
                     </div>
 
                     <ul class="nav flex-column">
@@ -145,8 +154,8 @@
                             </a>
                         </li>
                         <li class="nav-item mt-3 pt-3 border-top">
-                            <a class="nav-link" href="{{ route('frontend.home') }}">
-                                <i class="fas fa-store"></i> Ke Toko Utama
+                            <a class="nav-link text-primary fw-bold" href="{{ route('frontend.home') }}" target="_blank">
+                                <i class="fas fa-external-link-alt text-primary"></i> Ke Toko Utama <span class="badge bg-light text-dark border ms-auto small">Tab Baru</span>
                             </a>
                         </li>
                     </ul>

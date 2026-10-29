@@ -24,6 +24,7 @@ class User extends Authenticatable
         'address',
         'phone',
         'status',
+        'foto',
         'nama_ibu',
         'pemilik',
         'tipe_akun',
