@@ -20,9 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('roles');
+            $table->string('pemilik')->nullable()->default('STAFF');
             $table->string('address');
             $table->string('phone');
-            $table->enum("status", ["ACTIVE", "INACTIVE"]);
+            $table->enum("status", ["ACTIVE", "INACTIVE"])->default('ACTIVE');
             $table->string('nama_ibu');
             $table->timestamps();
         });

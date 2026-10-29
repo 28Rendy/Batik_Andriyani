@@ -15,9 +15,10 @@ class CreateBukuBesarsTable extends Migration
     {
         Schema::create('buku_besar', function (Blueprint $table) {
             $table->id();
-            $table->Integer('idtrans');
-            $table->string('notran', 10);
-            $table->string('catatan', 255);
+            $table->integer('idtrans')->nullable();
+            $table->string('notran', 20)->nullable();
+            $table->date('tgltr')->nullable();
+            $table->string('catatan', 255)->nullable();
             $table->double('jmldb')->nullable();
             $table->double('jmlcr')->nullable();
             $table->timestamps();

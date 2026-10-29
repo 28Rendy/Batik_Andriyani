@@ -15,7 +15,7 @@ class IsStaff
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role === "STAFF") {
+        if (auth()->check() && (auth()->user()->roles === "STAFF" || auth()->user()->roles === "PEMILIK" || auth()->user()->roles === "ADMIN")) {
             return $next($request);
         } else {
             abort(403);

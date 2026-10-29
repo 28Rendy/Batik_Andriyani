@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->roles === "PEMILIK") {
+        if (auth()->check() && in_array(auth()->user()->roles, ['PEMILIK', 'ADMIN'])) {
             return $next($request);
         } else {
             abort(403);

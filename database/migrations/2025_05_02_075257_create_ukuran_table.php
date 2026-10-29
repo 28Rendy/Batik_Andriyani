@@ -17,7 +17,7 @@ class CreateUkuranTable extends Migration
             $table->id();
             $table->string('ukuran'); // bukan "nama"
             $table->text('deskripsi')->nullable();
-            $table->integer('harga');
+            $table->integer('harga')->nullable()->default(0);
             $table->timestamps();
         });
         

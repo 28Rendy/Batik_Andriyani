@@ -31,7 +31,7 @@
             id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost:8000/home">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/home') }}">
                 <div class="sidebar-brand-icon rotate-n-0">
                     <img style="border-radius: 15px" src="{{ asset('asset/img/logo_batik.png') }}" width="60">
                 </div>
@@ -56,12 +56,12 @@
             <hr class="sidebar-divider">
 
         
-            @if (Auth::user()->roles == 'PEMILIK')
+            @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
                 <li class="nav-item active">
                     <div style="background-color: rgba(119, 114, 114, 0.515)"
                         class="my-2 mx-3 px-2  collapse-inner rounded color-black">
                         <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
-                            href="http://localhost:8000/user">
+                            href="{{ url('/user') }}">
                             <i class="fas fa-fw fa-user"></i>
                             <b><span class="text-light">Data Pengguna</span></b>
                         </a>
@@ -85,9 +85,9 @@
                     aria-labelledby="headingDataBarang" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('Sjadi') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/Sjadi"> Setengah Jadi</a>
+                            href="{{ url('/Sjadi') }}"> Setengah Jadi</a>
                         <a class="collapse-item {{ Request::is('Psendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/Psendiri"> Produksi Sendiri</a>
+                            href="{{ url('/Psendiri') }}"> Produksi Sendiri</a>
                     </div>
                 </div>
             </li>
@@ -110,12 +110,12 @@
                     aria-labelledby="headingKategoriBatik" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('motif') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/motif">Motif</a>
+                            href="{{ url('/motif') }}">Motif</a>
                         <a class="collapse-item {{ Request::is('Jkain') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/Jkain"> Jenis
+                            href="{{ url('/Jkain') }}"> Jenis
                             Kain</a>
                         <a class="collapse-item {{ Request::is('ukuran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/ukuran">
+                            href="{{ url('/ukuran') }}">
                             Ukuran</a>
                     </div>
                 </div>
@@ -138,10 +138,10 @@
                     aria-labelledby="headingPenjualan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('psetengah') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/psetengah">
+                            href="{{ url('/psetengah') }}">
                             Penj Setengah Jadi</a>
                         <a class="collapse-item {{ Request::is('ppsendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/ppsendiri">
+                            href="{{ url('/ppsendiri') }}">
                             Penj Produk Sendiri</a>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                     aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item {{ Request::is('pengeluaran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="http://localhost:8000/pengeluaran">
+                            href="{{ url('/pengeluaran') }}">
                             Pengeluaran Kas</a>
 
 
@@ -172,25 +172,71 @@
                 </div>
             </li>
 
-            <!-- <li class="nav-item {{ Request::is('berita/index') ? 'active' : '' }}">
+            <!-- Pesanan Online Pelanggan -->
+            <li class="nav-item {{ Request::is('admin/pesanan*') ? 'active' : '' }}">
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
-                        href="http://localhost:8000/berita/index">
-                        <i class="fas fa-fw fa-chart-bar"></i>
-                        <b><span class="text-light">Berita</span></b>
+                        href="{{ url('/admin/pesanan') }}">
+                        <i class="fas fa-fw fa-shopping-cart text-warning"></i>
+                        <b><span class="text-light">Pesanan Online</span></b>
                     </a>
                 </div>
-            </li> -->
+            </li>
+
+            <!-- Kelola Website (CMS) -->
+            @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
+            <li class="nav-item {{ Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*') ? 'active' : '' }}">
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                        data-toggle="collapse" data-target="#collapseCMS" aria-expanded="false"
+                        aria-controls="collapseCMS">
+                        <i class="fas fa-fw fa-globe text-info"></i>
+                        <b><span class="text-light">Kelola Website (CMS)</span></b>
+                    </a>
+                </div>
+                <div id="collapseCMS"
+                    class="collapse {{ Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*') ? 'show' : '' }}"
+                    aria-labelledby="headingCMS" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
+                            href="{{ url('/admin/site-settings') }}"> Identitas Toko & Kontak</a>
+                        <a class="collapse-item {{ Request::is('admin/hero-slider*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
+                            href="{{ url('/admin/hero-slider') }}"> Hero Slider (Banner)</a>
+                        <a class="collapse-item {{ Request::is('admin/galeri*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
+                            href="{{ url('/admin/galeri') }}"> Galeri Foto</a>
+                        <a class="collapse-item {{ Request::is('admin/faq*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
+                            href="{{ url('/admin/faq') }}"> Kelola FAQ</a>
+                        <a class="collapse-item {{ Request::is('berita*') ? 'bg-secondary text-white' : '' }} fas fa-arrow-circle-right"
+                            href="{{ url('/berita') }}"> Berita & Artikel</a>
+                    </div>
+                </div>
+            </li>
+            @endif
+
+            <!-- Lihat Website Publik -->
+            <li class="nav-item">
+                <div style="background-color: rgba(40, 167, 69, 0.6)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
+                        href="{{ url('/') }}" target="_blank">
+                        <i class="fas fa-fw fa-external-link-alt text-white"></i>
+                        <b><span class="text-white">Lihat Website Publik</span></b>
+                    </a>
+                </div>
+            </li>
+
+            <!-- Laporan -->
                    
 
             <!-- Laporan -->
-            @if (Auth::user()->roles == 'PEMILIK')
+            @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
             <li class="nav-item {{ Request::is('laporan/index') ? 'active' : '' }}">
                 <div style="background-color: rgba(119, 114, 114, 0.515)"
                     class="my-2 mx-3 px-2 collapse-inner rounded color-black">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
-                        href="http://localhost:8000/laporan/index">
+                        href="{{ url('/laporan/index') }}">
                         <i class="fas fa-fw fa-chart-bar"></i>
                         <b><span class="text-light">Laporan</span></b>
                     </a>

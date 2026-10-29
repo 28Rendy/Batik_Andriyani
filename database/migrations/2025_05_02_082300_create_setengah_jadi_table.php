@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProduksiSendiriTable extends Migration
+class CreateSetengahJadiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateProduksiSendiriTable extends Migration
      */
     public function up()
     {
-        Schema::create('produksi_sendiri', function (Blueprint $table) {
+        Schema::create('setengah_jadi', function (Blueprint $table) {
             $table->id();
             $table->string('nama_produk');
-            // $table->foreignId('motif')->constrained()->onDelete('cascade');
-            // $table->foreignId('jenis_kain')->constrained()->onDelete('cascade');
-            // $table->foreignId('ukuran')->constrained()->onDelete('cascade');
+            $table->string('kode_produk')->unique();
             $table->foreignId('motif_id')->constrained('motif')->onDelete('cascade');
             $table->foreignId('jenis_kain_id')->constrained('jenis_kain')->onDelete('cascade');
             $table->foreignId('ukuran_id')->constrained('ukuran')->onDelete('cascade');
-
             $table->integer('stok')->default(0);
-            $table->float('harga', 8, 2);  // Kolom harga
+            $table->double('harga', 15, 2)->default(0);
             $table->string('foto')->nullable();
             $table->timestamps();
         });
@@ -37,6 +34,7 @@ class CreateProduksiSendiriTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produksi_sendiri');
+        Schema::dropIfExists('setengah_jadi');
     }
 }
+

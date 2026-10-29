@@ -13,7 +13,7 @@ class BukubesarController extends Controller
      */
     public function index()
     {
-        $bb = \App\Bukubesar::orderBy('created_at', 'DESC')->get();
+        $bb = \App\Models\BukuBesar::orderBy('created_at', 'DESC')->get();
         return view( 'bukubesar.bukubesar' , ['bukubesar' => $bb]);
 
     }

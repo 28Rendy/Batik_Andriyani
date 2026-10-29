@@ -15,14 +15,16 @@ class CreatePenjualanBatikTable extends Migration
             $table->id();
             $table->date('tanggal_penjualan');
             $table->string('nama_pelanggan');
+            $table->unsignedBigInteger('produk_id')->nullable();
+            $table->string('kode_produk')->nullable();
             $table->string('nama_produk');
             $table->enum('sumber_produk', ['setengah_jadi', 'produksi_sendiri']);
             $table->unsignedInteger('jumlah_item');
-            $table->unsignedInteger('harga_satuan');
-            $table->unsignedInteger('total_bayar');
+            $table->double('harga_satuan', 15, 2);
+            $table->double('total_bayar', 15, 2);
             $table->text('keterangan')->nullable();
             $table->string('bukti_pembayaran')->nullable();
-            $table->enum('status_pembayaran', ['lunas', 'belum_lunas']);
+            $table->enum('status_pembayaran', ['lunas', 'belum_lunas'])->default('belum_lunas');
             $table->timestamps();
         });
     }

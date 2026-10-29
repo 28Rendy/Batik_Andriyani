@@ -17,7 +17,7 @@ class CreateJenisKainTable extends Migration
             $table->id();
             $table->string('nama');
             $table->text('deskripsi')->nullable();
-            $table->integer('harga');
+            $table->integer('harga')->nullable()->default(0);
             $table->timestamps();
         });
         

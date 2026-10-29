@@ -1,128 +1,117 @@
 <?php
 
-// use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\JenisKainController;
-use App\Http\Controllers\MotifController;
-use App\Http\Controllers\PemasukanKasController;
-use App\Http\Controllers\UkuranController;
-use App\Http\Controllers\PemkasController;
-use App\Http\Controllers\PSetengahJadiController;
-use App\Http\Controllers\PProduksisendiriController;
-use App\Http\Controllers\PengeluaranController;
-// use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ForgotController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\ProduksiSendiriControllerx;
-use App\Http\Controllers\SetengahJadiController;
-use App\Http\Middleware\IsAdmin;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\WelcomeController;
-use App\Models\Berita;
 use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Frontend Routes (Multi-Page Publik)
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+Route::get('/', 'FrontendController@home')->name('frontend.home');
+Route::get('/produk', 'FrontendController@produk')->name('frontend.produk');
+Route::get('/produk/{kategori}/{id}', 'FrontendController@detailProduk')->name('frontend.produk.detail');
+Route::get('/galeri', 'FrontendController@galeri')->name('frontend.galeri');
+Route::get('/berita-batik', 'FrontendController@berita')->name('frontend.berita');
+Route::get('/berita-batik/{id}', 'FrontendController@detailBerita')->name('frontend.berita.detail');
+Route::get('/tentang-kami', 'FrontendController@tentang')->name('frontend.tentang');
+Route::get('/kontak', 'FrontendController@kontak')->name('frontend.kontak');
+Route::post('/checkout', 'FrontendController@checkout')->name('frontend.checkout');
 
-Route::get('/', [WelcomeController::class, 'index']);
-
+/*
+|--------------------------------------------------------------------------
+| Autentikasi Pengguna
+|--------------------------------------------------------------------------
+*/
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+// Registrasi Khusus Pelanggan
+Route::get('/register-pelanggan', 'PelangganController@showRegister')->name('register.pelanggan');
+Route::post('/register-pelanggan', 'PelangganController@register')->name('register.pelanggan.store');
 
-Route::get('/user/hapus/{kode}', 'UserController@destroy');
+// Lupa Password
+Route::get('/forgot', 'ForgotController@create')->name('forgot.create');
+Route::post('/forgot', 'ForgotController@store')->name('forgot.store');
+Route::get('/forgot/reset', 'ForgotController@edit')->name('forgot.edit');
+Route::put('/forgot/reset', 'ForgotController@update')->name('forgot.update');
 
-Route::resource('/akun', 'AkunController');
-
-Route::get('/akun/hapus/{kode}', 'AkunController@destroy');
-
-Route::resource('/kaskeluar', 'KaskeluarController');
-
-Route::get('/kaskeluar/hapus/{id}', 'KaskeluarController@destroy');
-
-Route::resource('/bukubesar', 'BukubesarController');
-
-Route::resource('/kasmasuk', 'KasmasukController');
-
-Route::get('/kasmasuk/hapus/{id}', 'KasmasukController@destroy');
-
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::resource('/persediaan', 'PersediaanController');
-Route::resource('/Psendiri', 'ProduksiSendiriController');
-Route::resource('/Sjadi', 'SetengahJadiController');
-Route::resource('/motif', 'MotifController');
-Route::resource('/ukuran', 'UkuranController');
-Route::resource('/Jkain', 'JenisKainController');
-Route::resource('/pemkas', 'PemasukankasController');
-Route::resource('/psetengah', 'PSetengahJadiController');
-Route::resource('/ppsendiri', 'PProduksisendiriController');
-Route::resource('/psetengah', 'PSetengahJadiController');
-Route::resource('/pengeluaran', 'PengeluaranController');
-
-Route::get('/api/chart-data', [HomeController::class, 'getChartData']);
-Route::get('/api/stok-chart', [HomeController::class, 'getStokChartData']);
-
-
-
-// Form input email dan nama ibu
-Route::get('/forgot', [ForgotController::class, 'create'])->name('forgot.create');
-
-// Proses validasi email + nama ibu
-Route::post('/forgot', [ForgotController::class, 'store'])->name('forgot.store');
-
-// Form input password baru
-Route::get('/forgot', [ForgotController::class, 'edit'])->name('forgot.edit');
-
-// Proses simpan password baru
-Route::post('/forgot', [ForgotController::class, 'update'])->name('forgot.update');
-Route::put('/forgot', [ForgotController::class, 'update'])->name('forgot.update');
-Route::get('/forgot', [App\Http\Controllers\ForgotController::class, 'create'])->name('forgot.create');
-
-// Proses verifikasi email dan nama ibu (POST)
-Route::post('/forgot', [ForgotController::class, 'store'])->name('forgot.store');
-
-// Tampilkan form reset password (GET)
-Route::get('/forgot/reset', [ForgotController::class, 'edit'])->name('forgot.edit');
-
-// Proses reset password (PUT)
-Route::put('/forgot/reset', [ForgotController::class, 'update'])->name('forgot.update');
-
-
-Route::middleware([IsAdmin::class])->group(function () {
-    Route::resource('/user', 'UserController');
-    // Route::resource('/laporan', 'LaporanController');
-    // Route::get('/laporan', [LaporanController::class, 'pengeluaran']);
-    Route::get('/laporan/index', [LaporanController::class, 'index']);
-    Route::get('/laporan/show', [LaporanController::class, 'show']);
-    Route::get('/laporan/pengeluaran', [LaporanController::class, 'pengeluaran']); // Ganti nama route ini
-
+/*
+|--------------------------------------------------------------------------
+| Portal Khusus Pelanggan (Setelah Login Sebagai Pelanggan)
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth', 'pelanggan'])->prefix('pelanggan')->name('pelanggan.')->group(function () {
+    Route::get('/dashboard', 'PelangganController@dashboard')->name('dashboard');
+    Route::get('/pesanan', 'PelangganController@pesanan')->name('pesanan');
+    Route::get('/pesanan/{id}', 'PelangganController@detailPesanan')->name('pesanan.detail');
+    Route::get('/profil', 'PelangganController@profil')->name('profil');
+    Route::put('/profil', 'PelangganController@updateProfil')->name('profil.update');
 });
 
-// Admin Routes (dengan middleware auth jika diperlukan)
+/*
+|--------------------------------------------------------------------------
+| Dashboard & Fitur Admin / Pemilik / Staff
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/api/chart-data', 'HomeController@getChartData');
+    Route::get('/api/stok-chart', 'HomeController@getStokChartData');
 
+    // Master Data Barang & Kategori
+    Route::resource('/persediaan', 'PersediaanController');
+    Route::resource('/Psendiri', 'ProduksiSendiriController');
+    Route::resource('/Sjadi', 'SetengahJadiController');
+    Route::resource('/motif', 'MotifController');
+    Route::resource('/ukuran', 'UkuranController');
+    Route::resource('/Jkain', 'JenisKainController');
 
-// Route for berita resource
-// Route::resource('/berita', BeritaController::class);
+    // Penjualan & Pengeluaran
+    Route::resource('/psetengah', 'PSetengahJadiController');
+    Route::resource('/ppsendiri', 'PProduksisendiriController');
+    Route::resource('/pengeluaran', 'PengeluaranController');
+    Route::resource('/bukubesar', 'BukubesarController');
+    Route::resource('/akun', 'AkunController');
+    Route::get('/akun/hapus/{kode}', 'AkunController@destroy');
 
-// Display list of published news
-Route::get('/berita/index', [App\Http\Controllers\BeritaController::class, 'index'])->name('berita.index');
-Route::get('/berita/create', [App\Http\Controllers\BeritaController::class, 'create'])->name('berita.create');
-Route::get('/berita/edit', [App\Http\Controllers\BeritaController::class, 'edit'])->name('berita.edit');
-Route::post('/berita/update', [App\Http\Controllers\BeritaController::class, 'update'])->name('berita.update');
-Route::post('/berita/store', [App\Http\Controllers\BeritaController::class, 'store'])->name('berita.store');
-Route::get('/semua-berita', [App\Http\Controllers\BeritaController::class, 'frontend'])->name('semua-berita');
-Route::delete('/berita/{news:slug}/delete', [App\Http\Controllers\BeritaController::class, 'destroy'])->name('berita.destroy');
+    // Manajemen Berita (Admin)
+    Route::get('/berita', 'BeritaController@index')->name('berita');
+    Route::get('/berita/index', 'BeritaController@index')->name('berita.index');
+    Route::get('/berita/create', 'BeritaController@create')->name('berita.create');
+    Route::get('/berita/edit', 'BeritaController@edit')->name('berita.edit');
+    Route::post('/berita/update', 'BeritaController@update')->name('berita.update');
+    Route::post('/berita/store', 'BeritaController@store')->name('berita.store');
+    Route::delete('/berita/{news:slug}/delete', 'BeritaController@destroy')->name('berita.destroy');
+    Route::get('/berita/{news:slug}', 'BeritaController@show')->name('berita.show');
 
-// Display a specific news item
-Route::get('/berita/{news:slug}', [App\Http\Controllers\BeritaController::class, 'show'])->name('berita.show');
+    // Khusus Admin & Pemilik
+    Route::middleware([\App\Http\Middleware\IsAdmin::class])->group(function () {
+        Route::resource('/user', 'UserController');
+        Route::get('/user/hapus/{kode}', 'UserController@destroy');
+
+        // Laporan
+        Route::get('/laporan/index', 'LaporanController@index');
+        Route::get('/laporan/show', 'LaporanController@show');
+        Route::get('/laporan/pengeluaran', 'LaporanController@pengeluaran');
+
+        // Kelola Pesanan Online Pelanggan
+        Route::prefix('admin')->name('admin.')->group(function () {
+            Route::get('/pesanan', 'Admin\PesananAdminController@index')->name('pesanan.index');
+            Route::get('/pesanan/{id}', 'Admin\PesananAdminController@show')->name('pesanan.show');
+            Route::put('/pesanan/{id}/status', 'Admin\PesananAdminController@updateStatus')->name('pesanan.updateStatus');
+
+            // CMS Settings
+            Route::get('/site-settings', 'Admin\SiteSettingController@index')->name('site-settings.index');
+            Route::post('/site-settings', 'Admin\SiteSettingController@update')->name('site-settings.update');
+
+            // CMS Hero Slider
+            Route::resource('hero-slider', 'Admin\HeroSliderController');
+
+            // CMS Galeri
+            Route::resource('galeri', 'Admin\GaleriController');
+
+            // CMS FAQ
+            Route::resource('faq', 'Admin\FaqController');
+        });
+    });
+});

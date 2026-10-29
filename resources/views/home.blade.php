@@ -38,7 +38,7 @@
                     <b>
                         <h3 style="text-align: center ">Stok Barang Produksi Sendiri</h3>
                     </b>
-                    <a href="http://localhost:8000/Psendiri" class=""
+                    <a href="{{ url('/Psendiri') }}" class=""
                         style="position: absolute; right: 0; top: 0px; background-color: rgb(97, 170, 215); color: white; padding: 5px; border-radius: 5px; padding-left: 10px; padding-right: 10px">Lihat
                         Data</a>
                 </div>
@@ -78,7 +78,7 @@
                     <b>
                         <h3 style="text-align: center ">Stok Barang Produksi Setengah Jadi</h3>
                     </b>
-                    <a href="http://localhost:8000/Sjadi" class=""
+                    <a href="{{ url('/Sjadi') }}" class=""
                         style="position: absolute; right: 0; top: 0px; background-color: rgb(97, 170, 215); color: white; padding: 5px; border-radius: 5px; padding-left: 10px; padding-right: 10px">Lihat
                         Data</a>
                 </div>

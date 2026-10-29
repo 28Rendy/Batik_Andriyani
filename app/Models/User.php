@@ -26,6 +26,7 @@ class User extends Authenticatable
         'status',
         'nama_ibu',
         'pemilik',
+        'tipe_akun',
     ];
 
     // Kolom yang harus disembunyikan ketika diakses dalam array atau JSON

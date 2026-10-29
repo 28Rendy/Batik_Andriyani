@@ -30,6 +30,18 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
+     * Redirect user based on account type.
+     */
+    public function redirectTo()
+    {
+        $user = auth()->user();
+        if ($user && ($user->tipe_akun === 'pelanggan' || strtolower($user->roles) === 'pelanggan')) {
+            return '/pelanggan/dashboard';
+        }
+        return '/home';
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

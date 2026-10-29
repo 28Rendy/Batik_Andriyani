@@ -59,7 +59,19 @@
                                             <a class="btn btn-link" href="{{ route('register') }}">Create an Account!</a>
                                         </div> --}}
                                         <div>
-                                            <a class="btn btn-link" href="{{ route('forgot.create') }}">Forgot Your Password?</a>
+                                            <a class="btn btn-link small" href="{{ route('forgot.create') }}">Lupa Password?</a>
+                                        </div>
+                                        <hr>
+                                        <div class="mb-2">
+                                            <span class="small text-muted">Belum punya akun pelanggan?</span><br>
+                                            <a class="btn btn-outline-dark btn-sm rounded-pill px-3 mt-1 font-weight-bold" href="{{ route('register.pelanggan') }}">
+                                                <i class="fas fa-user-plus mr-1"></i> Daftar Akun Pelanggan
+                                            </a>
+                                        </div>
+                                        <div class="mt-3">
+                                            <a class="small text-muted" href="{{ route('frontend.home') }}">
+                                                <i class="fas fa-arrow-left mr-1"></i> Kembali ke Beranda Website
+                                            </a>
                                         </div>
                                         
                                     </div>

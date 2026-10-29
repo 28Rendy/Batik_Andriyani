@@ -15,9 +15,10 @@ class CreateMotifTable extends Migration
     {
         Schema::create('motif', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_motif')->unique();
             $table->string('nama');
             $table->text('deskripsi')->nullable();
-            $table->integer('harga'); // gunakan integer, sesuai permintaan
+            $table->integer('harga')->nullable()->default(0);
             $table->timestamps();
         });        
     }

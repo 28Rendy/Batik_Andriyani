@@ -192,12 +192,13 @@
 
         <div class="container" style="margin-top: 50px" data-aos="fade-up">
 
+            @if ($news->isNotEmpty())
             <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-6">
                     <div>
-                        <img src="{{ asset('photos/' . $news->first()->image) }}" class="img-fluid"
+                        <img src="{{ $news->first()->image ? asset('photos/' . $news->first()->image) : asset('asset/img/logo_batik.png') }}" class="img-fluid"
                             style="border-radius: 30px; height: 460px; width: 100%; object-fit: cover;"
-                            alt="">
+                            alt="{{ $news->first()->title }}">
                     </div>
                 </div>
 
@@ -205,12 +206,12 @@
                     <div class="side-news">
                         @foreach ($news->skip(1) as $berita)
                             <div class="side-news-item">
-                                <img style="widhth: 100px; object-fit: cover"
-                                    src="{{ asset('photos/' . $berita->image) }}" alt="Berita 1">
+                                <img style="width: 100px; object-fit: cover"
+                                    src="{{ $berita->image ? asset('photos/' . $berita->image) : asset('asset/img/logo_batik.png') }}" alt="{{ $berita->title }}">
                                 <div class="side-news-content">
                                     <h3>{{ $berita->title }}</h3>
                                     <p>{{ $berita->content }}</p>
-                                    <div>{{ $berita->created_at->diffForHumans() }}</div>
+                                    <div>{{ $berita->created_at ? $berita->created_at->diffForHumans() : '' }}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -223,6 +224,11 @@
                     </a>
                 </div>
             </div><!-- End Tab 3 Content -->
+            @else
+            <div class="text-center py-5">
+                <p class="text-muted">Belum ada berita yang diterbitkan saat ini.</p>
+            </div>
+            @endif
         </div>
 
         </div>
