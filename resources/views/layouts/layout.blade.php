@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard</title>
+
+    <link href="{{ asset('asset/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('asset/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('asset/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul style="width: 250px" class="navbar-nav bg-gradient-primary sidebar sidebar-light accordion"
+            id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost:8000/home">
+                <div class="sidebar-brand-icon rotate-n-0">
+                    <img style="border-radius: 15px" src="{{ asset('asset/img/logo_batik.png') }}" width="60">
+                </div>
+                <div class="sidebar-brand-text mx-2 text-light ">Andriyani Batik</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Dashboard Link -->
+            <li class="nav-item active">
+                <div style="background-color: rgba(119, 114, 114, 0.822)"
+                    class="py-2 mx-2 px-2 collapse-inner rounded color-black">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="fas fa-fw fa-home"></i>
+                        <b><span class="text-light">Dashboard</span></b>
+                    </a>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+        
+            @if (Auth::user()->roles == 'PEMILIK')
+                <li class="nav-item active">
+                    <div style="background-color: rgba(119, 114, 114, 0.515)"
+                        class="my-2 mx-3 px-2  collapse-inner rounded color-black">
+                        <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
+                            href="http://localhost:8000/user">
+                            <i class="fas fa-fw fa-user"></i>
+                            <b><span class="text-light">Data Pengguna</span></b>
+                        </a>
+                    </div>
+                </li>
+            @endif
+            <!-- Data Barang -->
+            <li class="nav-item {{ Request::is('Sjadi') || Request::is('Psendiri') ? 'active' : '' }}">
+                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                        data-toggle="collapse" data-target="#collapseDataBarang" aria-expanded="false"
+                        aria-controls="collapseDataBarang">
+                        <i class="fas fa-fw fa-folder-open"></i>
+                        <b><span class="text-light">Data Barang</span></b>
+                    </a>
+                </div>
+                <div id="collapseDataBarang"
+                    class="collapse {{ Request::is('Sjadi') || Request::is('Psendiri') ? 'show' : '' }}"
+                    aria-labelledby="headingDataBarang" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('Sjadi') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/Sjadi"> Setengah Jadi</a>
+                        <a class="collapse-item {{ Request::is('Psendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/Psendiri"> Produksi Sendiri</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Kategori Batik -->
+            <li
+                class="nav-item {{ Request::is('motif') || Request::is('Jkain') || Request::is('ukuran') ? 'active' : '' }}">
+                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                        data-toggle="collapse" data-target="#collapseKategoriBatik" aria-expanded="false"
+                        aria-controls="collapseKategoriBatik">
+                        <i class="fas fa-fw fa-list-alt"></i>
+                        <b><span class="text-light">Kategori Batik</span></b>
+                    </a>
+                </div>
+                <div id="collapseKategoriBatik"
+                    class="collapse {{ Request::is('motif') || Request::is('Jkain') || Request::is('ukuran') ? 'show' : '' }}"
+                    aria-labelledby="headingKategoriBatik" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('motif') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/motif">Motif</a>
+                        <a class="collapse-item {{ Request::is('Jkain') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/Jkain"> Jenis
+                            Kain</a>
+                        <a class="collapse-item {{ Request::is('ukuran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/ukuran">
+                            Ukuran</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Penjualan Menu -->
+            <li class="nav-item {{ Request::is('psetengah') || Request::is('ppsendiri') ? 'active' : '' }}">
+                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                        data-toggle="collapse" data-target="#collapsePenjualan" aria-expanded="false"
+                        aria-controls="collapsePenjualan">
+                        <i class="fas fa-fw fa-exchange-alt"></i>
+                        <b><span class="text-light">Penjualan</span></b>
+                    </a>
+                </div>
+                <div style="margin-bottom: 7px" id="collapsePenjualan"
+                    class="collapse {{ Request::is('psetengah') || Request::is('ppsendiri') ? 'show' : '' }}"
+                    aria-labelledby="headingPenjualan" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('psetengah') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/psetengah">
+                            Penj Setengah Jadi</a>
+                        <a class="collapse-item {{ Request::is('ppsendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/ppsendiri">
+                            Penj Produk Sendiri</a>
+                    </div>
+                </div>
+            </li>
+
+    
+            <!-- Keuangan Menu -->
+            <li class="nav-item {{ Request::is('pengeluaran') ? 'active' : '' }}">
+                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#"
+                        data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="false"
+                        aria-controls="collapseKeuangan">
+                        <i class="fas fa-fw fa-wallet"></i>
+                        <b><span class="text-light">Menu Keuangan lain</span></b>
+                    </a>
+                </div>
+                <div id="collapseKeuangan" class="collapse {{ Request::is('pengeluaran') ? 'show' : '' }}"
+                    aria-labelledby="headingKeuangan" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ Request::is('pengeluaran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
+                            href="http://localhost:8000/pengeluaran">
+                            Pengeluaran Kas</a>
+
+
+                    </div>
+                </div>
+            </li>
+
+            <!-- <li class="nav-item {{ Request::is('berita/index') ? 'active' : '' }}">
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
+                        href="http://localhost:8000/berita/index">
+                        <i class="fas fa-fw fa-chart-bar"></i>
+                        <b><span class="text-light">Berita</span></b>
+                    </a>
+                </div>
+            </li> -->
+                   
+
+            <!-- Laporan -->
+            @if (Auth::user()->roles == 'PEMILIK')
+            <li class="nav-item {{ Request::is('laporan/index') ? 'active' : '' }}">
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
+                        href="http://localhost:8000/laporan/index">
+                        <i class="fas fa-fw fa-chart-bar"></i>
+                        <b><span class="text-light">Laporan</span></b>
+                    </a>
+                </div>
+            </li>
+            @endif
+            <!-- Laporan -->
+
+            <!-- Logout -->
+            <li class="nav-item">
+                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
+                <div style="background-color: rgba(119, 114, 114, 0.515)"
+                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                    <a style="padding-top: 7px; padding-bottom: 7px; cursor: pointer" class="nav-link"
+                        data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-fw fa-share"></i>
+                        <b><span class="text-light">Keluar</span></b>
+                    </a>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-dark topbar mb-2 static-top shadow">
+
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+
+                    <div style="width: 100% ">
+                        <div class="card-header bg-primary text-white text-center">
+                            <i class="fas fa-user"></i> <!-- Add appropriate icon -->
+                            <strong>Welcome Back.... !!!</strong>
+                            <i>{{ Auth::user()->nama ?? 'Guest' }}</i> di website Andriyani Batik
+                        </div>
+
+                    </div>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
+
+                        <!-- Nav Item - User Information -->
+                        {{-- <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small"><b>{{ Auth::user()->nama ?? 'Guest' }}</b></span>
+                        <img class="img-profile rounded-circle" src="{{ asset('asset/img/avatar2.png') }}">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                        </li> --}}
+                    </ul>
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- DataTales Example -->
+                    <!-- Page Heading -->
+                    @yield('content')
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-secondary">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span class="text-light">Copyright &copy; OkwanFast ~ Andriyani Batik 2025</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title text-light" id="exampleModalLabel">Keluar Aplikasi</h5>
+                    <button class="close text-light" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body bg-light">
+                    <p class="text-dark">Pilih "Logout" apabila ingin keluar aplikasi</p>
+                </div>
+                <div class="modal-footer bg-light">
+                    <a class="btn btn-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="asset/vendor/jquery/jquery.min.js"></script>
+    <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="asset/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="asset/vendor/chart.js/Chart.min.js"></script>
+    <script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="asset/js/demo/chart-area-demo.js"></script>
+    <script src="asset/js/demo/chart-pie-demo.js"></script>
+    <script src="asset/js/demo/datatables-demo.js"></script>
+</body>
+
+</html>
