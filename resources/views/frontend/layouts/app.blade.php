@@ -60,6 +60,11 @@
             background-color: #faf8f5;
         }
 
+        /* Pastikan elemen dengan class text-white dan heading di dalamnya selalu berwarna putih */
+        .text-white, .text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
+            color: #ffffff !important;
+        }
+
         /* Kontras Tinggi untuk teks & background kuning/emas di Frontend */
         .text-warning, .section-subtitle {
             color: #8c5200 !important; /* warna cokelat keemasan tua pekat, kontras tinggi & jelas terbaca */

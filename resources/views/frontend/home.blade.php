@@ -265,8 +265,8 @@
 <!-- Banner CTA WhatsApp -->
 <section class="py-5 text-white text-center" style="background: linear-gradient(135deg, #4e342e, #2b211b);">
     <div class="container py-3">
-        <h2 class="font-serif fw-bold mb-3">Ingin Berkonsultasi atau Memesan Motif Batik Khusus?</h2>
-        <p class="lead mb-4 mx-auto" style="max-width: 600px;">Kami melayani pesanan batik tulis seragam kantor, keluarga, acara pernikahan, maupun koleksi pribadi.</p>
+        <h2 class="font-serif fw-bold mb-3 text-white" style="color: #ffffff !important;">Ingin Berkonsultasi atau Memesan Motif Batik Khusus?</h2>
+        <p class="lead mb-4 mx-auto text-white" style="max-width: 600px; color: #f5ede4 !important;">Kami melayani pesanan batik tulis seragam kantor, keluarga, acara pernikahan, maupun koleksi pribadi.</p>
         @php $wa = \App\Models\SiteSetting::getSetting('whatsapp', '628123456789'); @endphp
         <a href="https://wa.me/{{ $wa }}?text=Halo%20Batik%20Andriyani,%20saya%20ingin%20konsultasi%20pesanan%20batik." target="_blank" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow">
             <i class="bi bi-whatsapp me-2"></i> Hubungi Kami via WhatsApp
