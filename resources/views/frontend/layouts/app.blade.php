@@ -168,6 +168,62 @@
             background-color: #795548 !important;
         }
 
+        /* === TOMBOL PANAH SCROLL NAVBAR === */
+        .nav-arrow {
+            flex-shrink: 0;
+            background: #f3ece4;
+            border: 1px solid #d7c5b3;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #5d4037;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            padding: 0;
+            z-index: 2;
+            opacity: 0.85;
+        }
+
+        .nav-arrow:hover {
+            background: #795548;
+            color: #fff;
+            border-color: #795548;
+            opacity: 1;
+            box-shadow: 0 2px 8px rgba(121,85,72,0.25);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* === GARIS SCROLL INDIKATOR === */
+        .nav-scroll-track {
+            position: absolute;
+            bottom: -6px;
+            left: 32px;
+            right: 32px;
+            height: 3px;
+            background: #e8ddd5;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .nav-scroll-thumb {
+            height: 100%;
+            background: linear-gradient(90deg, #795548, #a0785a);
+            border-radius: 99px;
+            width: 40%;
+            transition: width 0.2s, left 0.2s;
+            position: absolute;
+            left: 0;
+        }
+
         .btn-auth-primary {
             display: inline-flex;
             align-items: center;
@@ -311,17 +367,34 @@
             </a>
 
             <!-- Menu Navigasi Multi-Page -->
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a></li>
-                    <li><a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk*') ? 'active' : '' }}">Katalog Produk</a></li>
-                    <li><a href="{{ route('frontend.galeri') }}" class="{{ request()->routeIs('frontend.galeri') ? 'active' : '' }}">Galeri Foto</a></li>
-                    <li><a href="{{ route('frontend.berita') }}" class="{{ request()->routeIs('frontend.berita*') ? 'active' : '' }}">Berita</a></li>
-                    <li><a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang Kami</a></li>
-                    <li><a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak & FAQ</a></li>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
+            <div class="nav-scroll-wrapper flex-shrink-1" style="min-width:0; flex:1 1 auto; position:relative; display:flex; align-items:center; margin:0 6px;">
+                <!-- Tombol Panah Kiri -->
+                <button class="nav-arrow nav-arrow-left" id="navArrowLeft" aria-label="Geser kiri" title="Geser kiri">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="{{ route('frontend.home') }}" class="{{ request()->routeIs('frontend.home') ? 'active' : '' }}">Beranda</a></li>
+                        <li><a href="{{ route('frontend.produk') }}" class="{{ request()->routeIs('frontend.produk*') ? 'active' : '' }}">Katalog Produk</a></li>
+                        <li><a href="{{ route('frontend.galeri') }}" class="{{ request()->routeIs('frontend.galeri') ? 'active' : '' }}">Galeri Foto</a></li>
+                        <li><a href="{{ route('frontend.berita') }}" class="{{ request()->routeIs('frontend.berita*') ? 'active' : '' }}">Berita</a></li>
+                        <li><a href="{{ route('frontend.tentang') }}" class="{{ request()->routeIs('frontend.tentang') ? 'active' : '' }}">Tentang Kami</a></li>
+                        <li><a href="{{ route('frontend.kontak') }}" class="{{ request()->routeIs('frontend.kontak') ? 'active' : '' }}">Kontak & FAQ</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+
+                <!-- Tombol Panah Kanan -->
+                <button class="nav-arrow nav-arrow-right" id="navArrowRight" aria-label="Geser kanan" title="Geser kanan">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+
+                <!-- Garis Scroll Indikator -->
+                <div class="nav-scroll-track">
+                    <div class="nav-scroll-thumb" id="navScrollThumb"></div>
+                </div>
+            </div>
 
             <!-- Autentikasi Tombol -->
             <div class="d-flex align-items-center ms-2 flex-shrink-0">
@@ -453,6 +526,43 @@
     <script src="{{ asset('asset/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <script src="{{ asset('asset/js/main.js') }}"></script>
+
+    <!-- Script: Scroll Navbar dengan Panah & Indikator -->
+    <script>
+    (function () {
+        const nav      = document.getElementById('navmenu');
+        const btnLeft  = document.getElementById('navArrowLeft');
+        const btnRight = document.getElementById('navArrowRight');
+        const thumb    = document.getElementById('navScrollThumb');
+        const step     = 120; // px per klik panah
+
+        if (!nav || !btnLeft || !btnRight) return;
+
+        function updateUI() {
+            const max = nav.scrollWidth - nav.clientWidth;
+            // Tombol panah aktif/nonaktif
+            btnLeft.disabled  = nav.scrollLeft <= 0;
+            btnRight.disabled = nav.scrollLeft >= max - 1;
+            // Update thumb indikator
+            if (thumb && max > 0) {
+                const ratio    = nav.clientWidth / nav.scrollWidth;
+                const thumbW   = Math.max(ratio * 100, 15);          // % lebar thumb
+                const thumbPos = (nav.scrollLeft / max) * (100 - thumbW); // % posisi
+                thumb.style.width = thumbW + '%';
+                thumb.style.left  = thumbPos + '%';
+            }
+        }
+
+        btnLeft.addEventListener('click',  () => { nav.scrollBy({ left: -step, behavior: 'smooth' }); });
+        btnRight.addEventListener('click', () => { nav.scrollBy({ left:  step, behavior: 'smooth' }); });
+        nav.addEventListener('scroll', updateUI);
+        window.addEventListener('resize', updateUI);
+
+        // Inisialisasi awal
+        updateUI();
+    })();
+    </script>
+
     @yield('scripts')
 </body>
 </html>
