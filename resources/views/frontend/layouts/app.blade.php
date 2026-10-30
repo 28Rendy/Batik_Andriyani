@@ -100,6 +100,7 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             padding: 10px 0;
+            overflow: visible;
         }
 
         .header .sitename {
@@ -114,13 +115,23 @@
         /* Navmenu scrollable horizontal */
         .navmenu {
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: clip;             /* clip bukan hidden, agar dropdown bisa keluar */
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;        /* Firefox */
             -ms-overflow-style: none;     /* IE/Edge */
             flex: 1 1 auto;
             min-width: 0;
             margin: 0 8px;
+        }
+
+        /* Pastikan dropdown Bootstrap tidak terpotong oleh parent apapun */
+        .header .dropdown-menu {
+            position: absolute !important;
+            z-index: 9999 !important;
+        }
+
+        .nav-scroll-wrapper {
+            overflow: visible !important;
         }
 
         .navmenu::-webkit-scrollbar {
@@ -352,7 +363,7 @@
 
     <!-- Header & Navigation -->
     <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container position-relative d-flex align-items-center justify-content-between" style="flex-wrap: nowrap; gap: 8px; overflow: hidden;">
+        <div class="container position-relative d-flex align-items-center justify-content-between" style="flex-wrap: nowrap; gap: 8px; overflow: visible;">
 
             <a href="{{ route('frontend.home') }}" class="logo d-flex align-items-center text-decoration-none flex-shrink-0">
                 @php
