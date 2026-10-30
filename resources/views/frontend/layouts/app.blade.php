@@ -99,15 +99,16 @@
             background: #ffffff;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
-            padding: 14px 0;
+            padding: 10px 0;
         }
 
         .header .sitename {
             font-family: var(--font-serif);
             font-weight: 700;
-            font-size: 24px;
+            font-size: 20px;
             color: var(--primary-dark);
             margin: 0;
+            white-space: nowrap;
         }
 
         .navmenu ul {
@@ -116,18 +117,19 @@
             margin: 0;
             padding: 0;
             align-items: center;
-            gap: 8px;
+            gap: 2px;
         }
 
         .navmenu a,
         .navmenu a:focus {
             color: #3e2723 !important;
             font-weight: 500;
-            font-size: 15px;
-            padding: 8px 16px;
+            font-size: 13.5px;
+            padding: 6px 10px;
             border-radius: 20px;
             transition: all 0.25s ease;
             text-decoration: none;
+            white-space: nowrap;
         }
 
         /* Perbaikan: Saat hover teks tetap cokelat tua pekat, tidak menjadi putih */
@@ -155,10 +157,10 @@
             white-space: nowrap;
             background: linear-gradient(135deg, #795548, #5d4037);
             color: #fff !important;
-            padding: 7px 18px;
+            padding: 6px 14px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 13.5px;
+            font-size: 12.5px;
             line-height: 1.2;
             border: none;
             box-shadow: 0 2px 8px rgba(121, 85, 72, 0.25);
@@ -283,7 +285,7 @@
                     $logoPath = \App\Models\SiteSetting::getSetting('logo');
                 @endphp
                 @if ($logoPath && file_exists(public_path($logoPath)))
-                    <img src="{{ asset($logoPath) }}" alt="Logo" style="max-height: 44px;" class="me-2">
+                    <img src="{{ asset($logoPath) }}" alt="Logo" style="max-height: 36px;" class="me-2">
                 @else
                     <i class="fas fa-gem text-warning fs-3 me-2"></i>
                 @endif
