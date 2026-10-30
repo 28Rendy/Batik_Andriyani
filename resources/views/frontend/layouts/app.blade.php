@@ -111,6 +111,22 @@
             white-space: nowrap;
         }
 
+        /* Navmenu scrollable horizontal */
+        .navmenu {
+            overflow-x: auto;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;        /* Firefox */
+            -ms-overflow-style: none;     /* IE/Edge */
+            flex: 1 1 auto;
+            min-width: 0;
+            margin: 0 8px;
+        }
+
+        .navmenu::-webkit-scrollbar {
+            display: none;               /* Chrome/Safari */
+        }
+
         .navmenu ul {
             display: flex;
             list-style: none;
@@ -118,6 +134,8 @@
             padding: 0;
             align-items: center;
             gap: 2px;
+            flex-wrap: nowrap;
+            width: max-content;
         }
 
         .navmenu a,
@@ -278,9 +296,9 @@
 
     <!-- Header & Navigation -->
     <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container position-relative d-flex align-items-center justify-content-between">
+        <div class="container position-relative d-flex align-items-center justify-content-between" style="flex-wrap: nowrap; gap: 8px; overflow: hidden;">
 
-            <a href="{{ route('frontend.home') }}" class="logo d-flex align-items-center text-decoration-none">
+            <a href="{{ route('frontend.home') }}" class="logo d-flex align-items-center text-decoration-none flex-shrink-0">
                 @php
                     $logoPath = \App\Models\SiteSetting::getSetting('logo');
                 @endphp
@@ -306,7 +324,7 @@
             </nav>
 
             <!-- Autentikasi Tombol -->
-            <div class="d-flex align-items-center ms-3 flex-shrink-0">
+            <div class="d-flex align-items-center ms-2 flex-shrink-0">
                 @guest
                     <a class="btn-auth-primary" href="{{ route('login') }}">
                         <i class="fas fa-sign-in-alt me-1.5"></i> Masuk
