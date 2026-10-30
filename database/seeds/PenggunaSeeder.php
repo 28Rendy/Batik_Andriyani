@@ -12,18 +12,23 @@ class PenggunaSeeder extends Seeder
      */
     public function run()
     {
-        $pengguna = new \App\Models\User;
-        $pengguna->nama = "Administrator";
-        $pengguna->username = "admin";
-        $pengguna->email = "adminpa1@bsi.ac.id"; 
-        $pengguna->roles = "PEMILIK"; 
-        $pengguna->password = Hash::make("admin"); 
-        $pengguna->phone = "081851851851"; 
-        $pengguna->address = "Jl Raya Jatiwaringin No. 101";
-        $pengguna->status = "ACTIVE";
-        $pengguna->nama_ibu = "Admin";
-        $pengguna->pemilik = "PEMILIK";
-        $pengguna->save();
-        $this->command->info("User Admin berhasil diinsert");
+        $existing = \App\Models\User::where('email', 'adminpa1@bsi.ac.id')->first();
+        if (!$existing) {
+            $pengguna = new \App\Models\User;
+            $pengguna->nama = "Administrator";
+            $pengguna->username = "admin";
+            $pengguna->email = "adminpa1@bsi.ac.id"; 
+            $pengguna->roles = "PEMILIK"; 
+            $pengguna->password = Hash::make("admin"); 
+            $pengguna->phone = "081851851851"; 
+            $pengguna->address = "Jl Raya Jatiwaringin No. 101";
+            $pengguna->status = "ACTIVE";
+            $pengguna->nama_ibu = "Admin";
+            $pengguna->pemilik = "PEMILIK";
+            $pengguna->save();
+            $this->command->info("User Admin berhasil diinsert");
+        } else {
+            $this->command->info("User Admin sudah ada");
+        }
     }
 }

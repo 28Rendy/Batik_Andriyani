@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+require_once __DIR__ . '/CmsSeeder.php';
+require_once __DIR__ . '/BatikDataSeeder.php';
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,5 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(PenggunaSeeder::class);
+        $this->call(CmsSeeder::class);
+        $this->call(BatikDataSeeder::class);
     }
 }
