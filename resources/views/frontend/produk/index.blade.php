@@ -53,7 +53,7 @@
                         <div class="card card-product h-100">
                             <div style="height: 220px; overflow: hidden; position: relative;">
                                 @if ($p->foto)
-                                    <img src="{{ asset('photos/' . $p->foto) }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ $p->nama_produk }}">
+                                    <img src="{{ asset(str_starts_with($p->foto, 'photos/') ? $p->foto : 'photos/' . $p->foto) }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ $p->nama_produk }}">
                                 @else
                                     <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center text-white">
                                         <i class="fas fa-image fa-2x"></i>
@@ -97,7 +97,7 @@
                         <div class="card card-product h-100">
                             <div style="height: 220px; overflow: hidden; position: relative;">
                                 @if ($p->foto)
-                                    <img src="{{ asset('photos/' . $p->foto) }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ $p->nama_produk }}">
+                                    <img src="{{ asset(str_starts_with($p->foto, 'photos/') ? $p->foto : 'photos/' . $p->foto) }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ $p->nama_produk }}">
                                 @else
                                     <div class="w-100 h-100 bg-secondary d-flex align-items-center justify-content-center text-white">
                                         <i class="fas fa-image fa-2x"></i>

@@ -234,7 +234,7 @@
 
         /* Perbaikan: Judul banner halaman wajib putih bersih */
         .page-header-banner {
-            background: linear-gradient(rgba(35, 25, 20, 0.85), rgba(35, 25, 20, 0.9)), url('{{ asset("asset/img/slide1.jpg") }}') center/cover no-repeat;
+            background: linear-gradient(rgba(35, 25, 20, 0.85), rgba(35, 25, 20, 0.9)), url('{{ asset("asset/img/about.jpg") }}') center/cover no-repeat;
             padding: 85px 0 55px 0;
             color: #ffffff !important;
             text-align: center;
@@ -421,13 +421,17 @@
         </div>
     </footer>
 
+    <!-- Scroll To Top Button -->
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center" style="position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#8B4513;color:#fff;border-radius:50%;opacity:0;transition:all 0.4s;z-index:9999;text-decoration:none;display:none !important;">
+        <i class="bi bi-arrow-up-short" style="font-size:1.4rem;"></i>
+    </a>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('asset/vendor/bootstrap/js/Groovin/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('asset/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('asset/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('asset/js/main.js') }}"></script>
-
     @yield('scripts')
 </body>
 </html>

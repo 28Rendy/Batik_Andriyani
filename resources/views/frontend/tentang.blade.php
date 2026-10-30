@@ -30,7 +30,7 @@
 
         <div class="col-lg-6" data-aos="fade-left">
             <div class="card border-0 shadow rounded-4 overflow-hidden p-2 bg-white">
-                <img src="{{ asset('asset/img/slide2.jpg') }}" alt="Tentang Batik" class="rounded-3 w-100" style="max-height: 420px; object-fit: cover;">
+                <img src="{{ asset('asset/img/about.jpg') }}" alt="Tentang Batik" class="rounded-3 w-100" style="max-height: 420px; object-fit: cover;">
             </div>
         </div>
     </div>

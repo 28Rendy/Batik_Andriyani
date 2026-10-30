@@ -19,7 +19,7 @@
             <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white p-2">
                 <div style="min-height: 400px; max-height: 520px; overflow: hidden;" class="rounded-3">
                     @if ($produk->foto)
-                        <img src="{{ asset('photos/' . $produk->foto) }}" alt="{{ $produk->nama_produk }}" class="w-100 h-100" style="object-fit: cover;">
+                        <img src="{{ asset(str_starts_with($produk->foto, 'photos/') ? $produk->foto : 'photos/' . $produk->foto) }}" alt="{{ $produk->nama_produk }}" class="w-100 h-100" style="object-fit: cover;">
                     @else
                         <div class="w-100 h-100 bg-light d-flex align-items-center justify-content-center text-muted" style="min-height: 380px;">
                             <i class="fas fa-image fa-4x"></i>
