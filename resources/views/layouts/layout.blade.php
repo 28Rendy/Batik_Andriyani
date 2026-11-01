@@ -110,6 +110,64 @@
         label, strong {
             color: #2b211b !important;
         }
+
+        /* ====================================================
+           EFEK BLOK WARNA AKTIF SIDEBAR BACKEND ADMIN
+           ==================================================== */
+        .sidebar .nav-item {
+            margin-bottom: 3px;
+        }
+        .sidebar .sidebar-menu-box {
+            background-color: rgba(60, 50, 40, 0.65);
+            border-radius: 8px;
+            margin: 4px 10px;
+            padding: 2px 6px;
+            transition: all 0.25s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .sidebar .sidebar-menu-box:hover {
+            background-color: rgba(130, 90, 50, 0.85);
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Blok warna aktif yang kontras & menyala */
+        .sidebar .sidebar-menu-box.active {
+            background: linear-gradient(135deg, #d48b28 0%, #795548 100%) !important;
+            border-left: 5px solid #ffffff !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+            transform: translateX(4px);
+        }
+        .sidebar .sidebar-menu-box.active .nav-link span {
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+        .sidebar .sidebar-menu-box.active .nav-link i {
+            color: #ffffff !important;
+            transform: scale(1.15);
+        }
+
+        /* Sub-menu di dalam collapse aktif */
+        .collapse-inner .collapse-item {
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+            margin: 2px 6px;
+            color: #2b211b !important;
+        }
+        .collapse-inner .collapse-item:hover {
+            background-color: #f3ece4 !important;
+            color: #8d5b28 !important;
+        }
+        .collapse-inner .collapse-item.active-sub {
+            background: linear-gradient(135deg, #c58b27, #8d5b28) !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .collapse-inner .collapse-item.active-sub i {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 
@@ -134,9 +192,9 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Dashboard Link -->
-            <li class="nav-item active">
-                <div style="background-color: rgba(119, 114, 114, 0.822)"
-                    class="py-2 mx-2 px-2 collapse-inner rounded color-black">
+            @php $isDashboard = Request::is('home*'); @endphp
+            <li class="nav-item {{ $isDashboard ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isDashboard ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">
                         <i class="fas fa-fw fa-home"></i>
                         <b><span class="text-light">Dashboard</span></b>
@@ -147,11 +205,10 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-        
             @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
-                <li class="nav-item active">
-                    <div style="background-color: rgba(119, 114, 114, 0.515)"
-                        class="my-2 mx-3 px-2  collapse-inner rounded color-black">
+                @php $isUser = Request::is('user*'); @endphp
+                <li class="nav-item {{ $isUser ? 'active' : '' }}">
+                    <div class="sidebar-menu-box {{ $isUser ? 'active' : '' }}">
                         <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
                             href="{{ url('/user') }}">
                             <i class="fas fa-fw fa-user"></i>
@@ -160,114 +217,102 @@
                     </div>
                 </li>
             @endif
+
             <!-- Data Barang -->
-            <li class="nav-item {{ Request::is('Sjadi') || Request::is('Psendiri') ? 'active' : '' }}">
-                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseDataBarang"
-                        data-toggle="collapse" data-target="#collapseDataBarang" aria-expanded="false"
+            @php $isDataBarang = Request::is('Sjadi*') || Request::is('Psendiri*') || Request::is('persediaan*'); @endphp
+            <li class="nav-item {{ $isDataBarang ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isDataBarang ? 'active' : '' }}">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isDataBarang ? '' : 'collapsed' }}" href="#collapseDataBarang"
+                        data-toggle="collapse" data-target="#collapseDataBarang" aria-expanded="{{ $isDataBarang ? 'true' : 'false' }}"
                         aria-controls="collapseDataBarang">
                         <i class="fas fa-fw fa-folder-open"></i>
                         <b><span class="text-light">Data Barang</span></b>
                     </a>
                 </div>
                 <div id="collapseDataBarang"
-                    class="collapse {{ Request::is('Sjadi') || Request::is('Psendiri') ? 'show' : '' }}"
+                    class="collapse {{ $isDataBarang ? 'show' : '' }}"
                     aria-labelledby="headingDataBarang">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('Sjadi') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/Sjadi') }}"> Setengah Jadi</a>
-                        <a class="collapse-item {{ Request::is('Psendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/Psendiri') }}"> Produksi Sendiri</a>
+                    <div class="bg-white py-2 collapse-inner rounded shadow-sm">
+                        <a class="collapse-item {{ Request::is('Sjadi*') ? 'active-sub' : '' }}"
+                            href="{{ url('/Sjadi') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Setengah Jadi</a>
+                        <a class="collapse-item {{ Request::is('Psendiri*') ? 'active-sub' : '' }}"
+                            href="{{ url('/Psendiri') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Produksi Sendiri</a>
                     </div>
                 </div>
             </li>
 
             <!-- Kategori Batik -->
-            <li
-                class="nav-item {{ Request::is('motif') || Request::is('Jkain') || Request::is('ukuran') ? 'active' : '' }}">
-                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseKategoriBatik"
-                        data-toggle="collapse" data-target="#collapseKategoriBatik" aria-expanded="false"
+            @php $isKategori = Request::is('motif*') || Request::is('Jkain*') || Request::is('ukuran*'); @endphp
+            <li class="nav-item {{ $isKategori ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isKategori ? 'active' : '' }}">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isKategori ? '' : 'collapsed' }}" href="#collapseKategoriBatik"
+                        data-toggle="collapse" data-target="#collapseKategoriBatik" aria-expanded="{{ $isKategori ? 'true' : 'false' }}"
                         aria-controls="collapseKategoriBatik">
                         <i class="fas fa-fw fa-list-alt"></i>
                         <b><span class="text-light">Kategori Batik</span></b>
                     </a>
                 </div>
                 <div id="collapseKategoriBatik"
-                    class="collapse {{ Request::is('motif') || Request::is('Jkain') || Request::is('ukuran') ? 'show' : '' }}"
+                    class="collapse {{ $isKategori ? 'show' : '' }}"
                     aria-labelledby="headingKategoriBatik">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('motif') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/motif') }}">Motif</a>
-                        <a class="collapse-item {{ Request::is('Jkain') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/Jkain') }}"> Jenis
-                            Kain</a>
-                        <a class="collapse-item {{ Request::is('ukuran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/ukuran') }}">
-                            Ukuran</a>
+                    <div class="bg-white py-2 collapse-inner rounded shadow-sm">
+                        <a class="collapse-item {{ Request::is('motif*') ? 'active-sub' : '' }}"
+                            href="{{ url('/motif') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Motif</a>
+                        <a class="collapse-item {{ Request::is('Jkain*') ? 'active-sub' : '' }}"
+                            href="{{ url('/Jkain') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Jenis Kain</a>
+                        <a class="collapse-item {{ Request::is('ukuran*') ? 'active-sub' : '' }}"
+                            href="{{ url('/ukuran') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Ukuran</a>
                     </div>
                 </div>
             </li>
 
             <!-- Penjualan Menu -->
-            <li class="nav-item {{ Request::is('psetengah') || Request::is('ppsendiri') ? 'active' : '' }}">
-                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapsePenjualan"
-                        data-toggle="collapse" data-target="#collapsePenjualan" aria-expanded="false"
+            @php $isPenjualan = Request::is('psetengah*') || Request::is('ppsendiri*'); @endphp
+            <li class="nav-item {{ $isPenjualan ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isPenjualan ? 'active' : '' }}">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isPenjualan ? '' : 'collapsed' }}" href="#collapsePenjualan"
+                        data-toggle="collapse" data-target="#collapsePenjualan" aria-expanded="{{ $isPenjualan ? 'true' : 'false' }}"
                         aria-controls="collapsePenjualan">
                         <i class="fas fa-fw fa-exchange-alt"></i>
                         <b><span class="text-light">Penjualan</span></b>
                     </a>
                 </div>
                 <div style="margin-bottom: 7px" id="collapsePenjualan"
-                    class="collapse {{ Request::is('psetengah') || Request::is('ppsendiri') ? 'show' : '' }}"
+                    class="collapse {{ $isPenjualan ? 'show' : '' }}"
                     aria-labelledby="headingPenjualan">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('psetengah') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/psetengah') }}">
-                            Penj Setengah Jadi</a>
-                        <a class="collapse-item {{ Request::is('ppsendiri') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/ppsendiri') }}">
-                            Penj Produk Sendiri</a>
+                    <div class="bg-white py-2 collapse-inner rounded shadow-sm">
+                        <a class="collapse-item {{ Request::is('psetengah*') ? 'active-sub' : '' }}"
+                            href="{{ url('/psetengah') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Penj Setengah Jadi</a>
+                        <a class="collapse-item {{ Request::is('ppsendiri*') ? 'active-sub' : '' }}"
+                            href="{{ url('/ppsendiri') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Penj Produk Sendiri</a>
                     </div>
                 </div>
             </li>
 
-    
             <!-- Keuangan Menu -->
-            <li class="nav-item {{ Request::is('pengeluaran') ? 'active' : '' }}">
-                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
-                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link collapsed" href="#collapseKeuangan"
-                        data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="false"
+            @php $isKeuangan = Request::is('pengeluaran*') || Request::is('bukubesar*') || Request::is('akun*'); @endphp
+            <li class="nav-item {{ $isKeuangan ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isKeuangan ? 'active' : '' }}">
+                    <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isKeuangan ? '' : 'collapsed' }}" href="#collapseKeuangan"
+                        data-toggle="collapse" data-target="#collapseKeuangan" aria-expanded="{{ $isKeuangan ? 'true' : 'false' }}"
                         aria-controls="collapseKeuangan">
                         <i class="fas fa-fw fa-wallet"></i>
                         <b><span class="text-light">Menu Keuangan lain</span></b>
                     </a>
                 </div>
-                <div id="collapseKeuangan" class="collapse {{ Request::is('pengeluaran') ? 'show' : '' }}"
+                <div id="collapseKeuangan" class="collapse {{ $isKeuangan ? 'show' : '' }}"
                     aria-labelledby="headingKeuangan">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('pengeluaran') ? 'bg-secondary' : '' }} fas fa-arrow-circle-right"
-                            href="{{ url('/pengeluaran') }}">
-                            Pengeluaran Kas</a>
-
-
+                    <div class="bg-white py-2 collapse-inner rounded shadow-sm">
+                        <a class="collapse-item {{ Request::is('pengeluaran*') ? 'active-sub' : '' }}"
+                            href="{{ url('/pengeluaran') }}"><i class="fas fa-arrow-circle-right mr-1"></i> Pengeluaran Kas</a>
                     </div>
                 </div>
             </li>
 
             <!-- Pesanan Online Pelanggan -->
-            <li class="nav-item {{ Request::is('admin/pesanan*') ? 'active' : '' }}">
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+            @php $isPesanan = Request::is('admin/pesanan*'); @endphp
+            <li class="nav-item {{ $isPesanan ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isPesanan ? 'active' : '' }}">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
                         href="{{ url('/admin/pesanan') }}">
                         <i class="fas fa-fw fa-shopping-cart text-warning"></i>
@@ -282,8 +327,7 @@
                 $isCmsActive = Request::is('admin/site-settings*') || Request::is('admin/hero-slider*') || Request::is('admin/galeri*') || Request::is('admin/faq*') || Request::is('berita*');
             @endphp
             <li class="nav-item {{ $isCmsActive ? 'active' : '' }}">
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                <div class="sidebar-menu-box {{ $isCmsActive ? 'active' : '' }}">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link {{ $isCmsActive ? '' : 'collapsed' }}" href="#collapseCMS"
                         data-toggle="collapse" data-target="#collapseCMS" aria-expanded="{{ $isCmsActive ? 'true' : 'false' }}"
                         aria-controls="collapseCMS">
@@ -294,16 +338,16 @@
                 <div id="collapseCMS"
                     class="collapse {{ $isCmsActive ? 'show' : '' }}"
                     aria-labelledby="headingCMS">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'bg-secondary text-white' : '' }}"
+                    <div class="bg-white py-2 collapse-inner rounded shadow-sm">
+                        <a class="collapse-item {{ Request::is('admin/site-settings*') ? 'active-sub' : '' }}"
                             href="{{ url('/admin/site-settings') }}"><i class="fas fa-store mr-1"></i> Identitas Toko & Kontak</a>
-                        <a class="collapse-item {{ Request::is('admin/hero-slider*') ? 'bg-secondary text-white' : '' }}"
+                        <a class="collapse-item {{ Request::is('admin/hero-slider*') ? 'active-sub' : '' }}"
                             href="{{ url('/admin/hero-slider') }}"><i class="fas fa-images mr-1"></i> Hero Slider (Banner)</a>
-                        <a class="collapse-item {{ Request::is('admin/galeri*') ? 'bg-secondary text-white' : '' }}"
+                        <a class="collapse-item {{ Request::is('admin/galeri*') ? 'active-sub' : '' }}"
                             href="{{ url('/admin/galeri') }}"><i class="fas fa-camera mr-1"></i> Galeri Foto</a>
-                        <a class="collapse-item {{ Request::is('admin/faq*') ? 'bg-secondary text-white' : '' }}"
+                        <a class="collapse-item {{ Request::is('admin/faq*') ? 'active-sub' : '' }}"
                             href="{{ url('/admin/faq') }}"><i class="fas fa-question-circle mr-1"></i> Kelola FAQ</a>
-                        <a class="collapse-item {{ Request::is('berita*') ? 'bg-secondary text-white' : '' }}"
+                        <a class="collapse-item {{ Request::is('berita*') ? 'active-sub' : '' }}"
                             href="{{ url('/berita') }}"><i class="fas fa-newspaper mr-1"></i> Berita & Artikel</a>
                         <hr class="my-1">
                         <a class="collapse-item text-success font-weight-bold"
@@ -315,9 +359,9 @@
 
             <!-- Laporan -->
             @if (in_array(Auth::user()->roles, ['PEMILIK', 'ADMIN']))
-            <li class="nav-item {{ Request::is('laporan*') ? 'active' : '' }}">
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+            @php $isLaporan = Request::is('laporan*'); @endphp
+            <li class="nav-item {{ $isLaporan ? 'active' : '' }}">
+                <div class="sidebar-menu-box {{ $isLaporan ? 'active' : '' }}">
                     <a style="padding-top: 7px; padding-bottom: 7px" class="nav-link"
                         href="{{ url('/laporan/index') }}">
                         <i class="fas fa-fw fa-chart-bar"></i>
@@ -326,13 +370,10 @@
                 </div>
             </li>
             @endif
-            <!-- Laporan -->
 
             <!-- Logout -->
             <li class="nav-item">
-                {{-- <div style="background-color: rgb(69, 68, 68)" --}}
-                <div style="background-color: rgba(119, 114, 114, 0.515)"
-                    class="my-2 mx-3 px-2 collapse-inner rounded color-black">
+                <div class="sidebar-menu-box">
                     <a style="padding-top: 7px; padding-bottom: 7px; cursor: pointer" class="nav-link"
                         data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-fw fa-share"></i>
