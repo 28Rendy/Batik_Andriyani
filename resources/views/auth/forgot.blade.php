@@ -11,6 +11,37 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="{{ asset('asset/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <style>
+        body {
+            color: #000000 !important;
+        }
+        .card {
+            background-color: rgba(255, 248, 235, 0.94) !important;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+        }
+        h1, .h4, .text-gray-900 {
+            color: #000000 !important;
+            font-weight: 800 !important;
+        }
+        label, .col-form-label {
+            color: #000000 !important;
+            font-weight: 700 !important;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+            border: 1px solid #ced4da !important;
+            font-weight: 600 !important;
+        }
+        .form-control:focus {
+            color: #000000 !important;
+            background-color: #ffffff !important;
+            border-color: #80bdff !important;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-primary">
@@ -24,13 +55,13 @@
                             <div class="col-lg-20">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Ganti Password Anda</h1>
+                                        <h1 class="h4 text-gray-900 mb-4 font-weight-bold">Ganti Password Anda</h1>
                                     </div>
 
                                     <form action="{{ session('reset_email') ? route('forgot.update') : route('forgot.store') }}" method="POST">
                                         @csrf
                                         @if (session('reset_email'))
-                                            @method('PUT')
+                                             @method('PUT')
                                         @endif
                                     
                                         <div class="form-group">
@@ -70,9 +101,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <labe
-                                            l for="password_confirmation"
-                                                class="col-form-label text-md-left">Konfirmasi Password</labe>
+                                            <label for="password_confirmation" class="col-form-label text-md-left">Konfirmasi Password</label>
                                             <input type="password" id="password_confirmation" class="form-control"
                                                 name="password_confirmation" required autocomplete="new-password">
                                         </div>
@@ -88,7 +117,7 @@
                                         </div>
                                     </form>
                                     @if (session('success'))
-                                        <div class="alert alert-success">
+                                        <div class="alert alert-success mt-3">
                                             {{ session('success') }}
                                         </div>
                                     @endif
