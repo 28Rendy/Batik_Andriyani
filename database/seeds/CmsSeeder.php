@@ -11,21 +11,21 @@ class CmsSeeder extends Seeder
     {
         // ===== SITE SETTINGS =====
         $settings = [
-            ['key' => 'nama_toko',       'value' => 'Batik Andriyani',               'type' => 'text',     'label' => 'Nama Toko'],
-            ['key' => 'tagline',         'value' => 'Batik Tulis Khas Nusantara',     'type' => 'text',     'label' => 'Tagline / Slogan'],
-            ['key' => 'deskripsi_toko',  'value' => 'Batik Andriyani adalah produsen batik tulis berkualitas tinggi yang menggunakan bahan-bahan pilihan dan motif khas daerah. Kami berkomitmen menghadirkan batik autentik yang memadukan tradisi dan modernitas.', 'type' => 'textarea', 'label' => 'Deskripsi Toko'],
-            ['key' => 'alamat',          'value' => 'Jl. Batik No. 1, Kota Batik, Indonesia', 'type' => 'text', 'label' => 'Alamat Toko'],
-            ['key' => 'whatsapp',        'value' => '628123456789',                   'type' => 'text',     'label' => 'Nomor WhatsApp (tanpa +)'],
-            ['key' => 'email',           'value' => 'info@batikandriyani.com',         'type' => 'text',     'label' => 'Email Toko'],
-            ['key' => 'jam_buka',        'value' => 'Senin–Sabtu: 08.00–17.00 WIB',   'type' => 'text',     'label' => 'Jam Operasional'],
-            ['key' => 'logo',            'value' => 'asset/img/logo.png',             'type' => 'image',    'label' => 'Logo Toko'],
-            ['key' => 'footer_teks',     'value' => '© 2025 Batik Andriyani. Hak cipta dilindungi.', 'type' => 'text', 'label' => 'Teks Footer'],
-            ['key' => 'facebook',        'value' => '',                               'type' => 'text',     'label' => 'URL Facebook'],
-            ['key' => 'instagram',       'value' => '',                               'type' => 'text',     'label' => 'URL Instagram'],
-            ['key' => 'tentang_judul',   'value' => 'Tentang Batik Andriyani',        'type' => 'text',     'label' => 'Judul Halaman Tentang'],
-            ['key' => 'tentang_isi',     'value' => 'Batik Andriyani berdiri sejak tahun 2010, bergerak di bidang produksi dan penjualan batik tulis berkualitas. Kami menggunakan pewarna alami dan motif tradisional yang terus kami lestarikan.', 'type' => 'textarea', 'label' => 'Isi Halaman Tentang'],
-            ['key' => 'visi',            'value' => 'Menjadi produsen batik tulis terpercaya yang melestarikan budaya nusantara.', 'type' => 'textarea', 'label' => 'Visi'],
-            ['key' => 'misi',            'value' => "1. Menghasilkan batik berkualitas tinggi\n2. Melestarikan motif tradisional\n3. Memberdayakan pengrajin lokal", 'type' => 'textarea', 'label' => 'Misi'],
+            ['key' => 'nama_toko',       'value' => 'Aruna Batik Nusantara',          'type' => 'text',     'label' => 'Nama Toko'],
+            ['key' => 'tagline',         'value' => 'Keanggunan Mahakarya Batik Tulis Nusantara', 'type' => 'text', 'label' => 'Tagline / Slogan'],
+            ['key' => 'deskripsi_toko',  'value' => 'Aruna Batik Nusantara adalah produsen dan galeri batik tulis berkualitas tinggi yang berbasis di Tegal, Jawa Tengah. Kami menghadirkan mahakarya batik autentik perpaduan seni tradisional nusantara dan estetika modern.', 'type' => 'textarea', 'label' => 'Deskripsi Toko'],
+            ['key' => 'alamat',          'value' => 'Jl. Gajah Mada No. 88, Tegal Barat, Kota Tegal, Jawa Tengah 52113', 'type' => 'text', 'label' => 'Alamat Toko'],
+            ['key' => 'whatsapp',        'value' => '6281234567890',                  'type' => 'text',     'label' => 'Nomor WhatsApp (tanpa +)'],
+            ['key' => 'email',           'value' => 'kontak@arunabatik.com',          'type' => 'text',     'label' => 'Email Toko'],
+            ['key' => 'jam_buka',        'value' => 'Senin–Sabtu: 08.30–17.00 WIB',   'type' => 'text',     'label' => 'Jam Operasional'],
+            ['key' => 'logo',            'value' => 'asset/img/logo_batik.png',       'type' => 'image',    'label' => 'Logo Toko'],
+            ['key' => 'footer_teks',     'value' => '© 2025 SIMARA - Aruna Batik Nusantara. Hak cipta dilindungi.', 'type' => 'text', 'label' => 'Teks Footer'],
+            ['key' => 'facebook',        'value' => 'https://facebook.com',           'type' => 'text',     'label' => 'URL Facebook'],
+            ['key' => 'instagram',       'value' => 'https://instagram.com',          'type' => 'text',     'label' => 'URL Instagram'],
+            ['key' => 'tentang_judul',   'value' => 'Tentang Aruna Batik Nusantara',  'type' => 'text',     'label' => 'Judul Halaman Tentang'],
+            ['key' => 'tentang_isi',     'value' => 'Aruna Batik Nusantara berakar dari kecintaan terhadap warisan mahakarya kain batik nusantara, khususnya corak pesisiran Jawa Tengah. Kami berkomitmen menjaga keluhuran teknik batik tulis tradisional dengan sentuhan pewarnaan alami dan inovasi desain kontemporer.', 'type' => 'textarea', 'label' => 'Isi Halaman Tentang'],
+            ['key' => 'visi',            'value' => 'Menjadi pusat rujukan mahakarya batik tulis berkualitas tinggi yang membanggakan warisan nusantara di kancah nasional dan internasional.', 'type' => 'textarea', 'label' => 'Visi'],
+            ['key' => 'misi',            'value' => "1. Memproduksi kain batik tulis autentik dengan standar mutu tertinggi.\n2. Mengedukasi masyarakat luas tentang filosofi dan pelestarian corak batik nusantara.\n3. Memberdayakan pembatik dan perajin lokal di sentra daerah.", 'type' => 'textarea', 'label' => 'Misi'],
         ];
 
         foreach ($settings as $s) {
@@ -34,9 +34,9 @@ class CmsSeeder extends Seeder
 
         // ===== HERO SLIDERS =====
         $sliders = [
-            ['judul' => 'Selamat Datang di Batik Andriyani', 'deskripsi' => 'Temukan koleksi batik tulis premium dengan motif khas Nusantara', 'gambar' => 'asset/img/slide1.jpg', 'urutan' => 1, 'aktif' => true],
-            ['judul' => 'Koleksi Batik Terbaru',             'deskripsi' => 'Batik tulis dengan bahan pilihan dan pewarna alami berkualitas tinggi', 'gambar' => 'asset/img/slide2.jpg', 'urutan' => 2, 'aktif' => true],
-            ['judul' => 'Pesan Batik Custom',                'deskripsi' => 'Tersedia layanan pembuatan batik custom sesuai keinginan Anda', 'gambar' => 'asset/img/slide3.jpg', 'urutan' => 3, 'aktif' => true],
+            ['judul' => 'Selamat Datang di Aruna Batik',     'deskripsi' => 'Temukan koleksi batik tulis premium dengan motif khas pesisiran dan Nusantara', 'gambar' => 'asset/img/about.jpg', 'urutan' => 1, 'aktif' => true],
+            ['judul' => 'Koleksi Mahakarya Eksklusif',       'deskripsi' => 'Batik tulis dengan bahan sutra & katun primissima serta pewarna alami berkualitas tinggi', 'gambar' => 'asset/img/about.jpg', 'urutan' => 2, 'aktif' => true],
+            ['judul' => 'Layanan Batik Custom & Seragam',     'deskripsi' => 'Melayani pembuatan batik khusus instansi, keluarga, dan motif personal pilihan Anda', 'gambar' => 'asset/img/about.jpg', 'urutan' => 3, 'aktif' => true],
         ];
 
         foreach ($sliders as $s) {
@@ -45,18 +45,15 @@ class CmsSeeder extends Seeder
 
         // ===== FAQ =====
         $faqs = [
-            ['pertanyaan' => 'Apakah batik Anda 100% tulis tangan?', 'jawaban' => 'Ya, semua produk kami adalah batik tulis tangan asli yang dikerjakan oleh pengrajin berpengalaman.', 'urutan' => 1, 'aktif' => true],
-            ['pertanyaan' => 'Apakah bisa pesan desain custom?', 'jawaban' => 'Tentu bisa! Kami menerima pesanan custom batik dengan motif dan warna sesuai keinginan Anda. Hubungi kami via WhatsApp untuk konsultasi.', 'urutan' => 2, 'aktif' => true],
-            ['pertanyaan' => 'Berapa lama waktu pembuatan batik custom?', 'jawaban' => 'Tergantung tingkat kerumitan motif. Umumnya 2–4 minggu untuk batik tulis. Kami akan mengkonfirmasi estimasi waktu saat Anda memesan.', 'urutan' => 3, 'aktif' => true],
-            ['pertanyaan' => 'Apakah tersedia pengiriman ke luar kota?', 'jawaban' => 'Ya, kami melayani pengiriman ke seluruh Indonesia melalui berbagai jasa ekspedisi. Ongkos kirim ditanggung pembeli.', 'urutan' => 4, 'aktif' => true],
-            ['pertanyaan' => 'Bagaimana cara merawat batik agar awet?', 'jawaban' => 'Cuci dengan tangan menggunakan sabun khusus batik atau shampo, jangan diperas, keringkan di tempat teduh, dan hindari sinar matahari langsung.', 'urutan' => 5, 'aktif' => true],
+            ['pertanyaan' => 'Apakah batik di Aruna Batik 100% tulis tangan?', 'jawaban' => 'Ya, seluruh koleksi batik tulis kami adalah hasil canting tangan autentik yang dikerjakan oleh para pembatik berpengalaman.', 'urutan' => 1, 'aktif' => true],
+            ['pertanyaan' => 'Apakah bisa memesan desain batik custom?', 'jawaban' => 'Tentu bisa! Kami melayani pesanan khusus (custom motif, ukuran kain, serta warna seragam). Silakan konsultasikan kebutuhan Anda via WhatsApp.', 'urutan' => 2, 'aktif' => true],
+            ['pertanyaan' => 'Berapa lama estimasi pengerjaan batik tulis custom?', 'jawaban' => 'Proses pengerjaan batik tulis memakan waktu rata-rata 2–4 minggu bergantung pada kerumitan pola dan proses pewarnaan.', 'urutan' => 3, 'aktif' => true],
+            ['pertanyaan' => 'Apakah melayani pengiriman ke seluruh Indonesia?', 'jawaban' => 'Ya, kami melayani pengiriman aman ke seluruh kota di Indonesia melalui jasa ekspedisi terpercaya (JNE, POS, J&T, SiCepat).', 'urutan' => 4, 'aktif' => true],
+            ['pertanyaan' => 'Bagaimana cara merawat kain batik tulis agar awet?', 'jawaban' => 'Cucilah menggunakan sabun lerak atau shampoo khusus, jangan diperas terlalu kuat, dan jemurlah di tempat yang teduh tanpa terpapar terik matahari langsung.', 'urutan' => 5, 'aktif' => true],
         ];
 
-        foreach ($faqs as $f) {
-            Faq::updateOrCreate(['pertanyaan' => $f['pertanyaan']], $f);
+        foreach ($faqs as $s) {
+            Faq::updateOrCreate(['pertanyaan' => $s['pertanyaan']], $s);
         }
-
-        $this->command->info('CMS Seeder berhasil: Site Settings, Hero Sliders, FAQ telah diisi.');
     }
 }
-

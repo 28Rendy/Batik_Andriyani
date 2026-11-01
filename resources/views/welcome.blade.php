@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Welcome To Andriyani Batik</title>
+    <title>Welcome To SIMARA - Aruna Batik Nusantara</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
@@ -39,7 +39,7 @@
             <a href="http://localhost:8000/" class="gap-3 logo d-flex align-items-center me-auto">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <img src="{{ asset('asset/img/logo_batik.png') }}" alt="">
-                <h1 class="sitename">Andriyani Batik</h1>
+                <h1 class="sitename">Aruna Batik Nusantara</h1>
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -245,7 +245,7 @@
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>Fitur</h2>
-            <p>Andriyani Batik memiliki beberapa fitur yang memudahkan pengguna saat menggunakannya antara lain :
+            <p>Aruna Batik Nusantara memiliki beberapa fitur yang memudahkan pengguna saat menggunakannya antara lain :
             </p>
         </div><!-- End Section Title -->
 
@@ -261,9 +261,9 @@
                         <a href="#" class="stretched-link">
                             <h3>Data Pengguna</h3>
                         </a>
-                        <p>Fitur ini digunakan untuk menginput data pengguna Andriyani Batik, dapat disimpulkan
+                        <p>Fitur ini digunakan untuk menginput data pengguna Aruna Batik Nusantara, dapat disimpulkan
                             program
-                            Andriyani Batik dapat digunakan pada lebih dari satu device.</p>
+                            Aruna Batik Nusantara dapat digunakan pada lebih dari satu device.</p>
                     </div>
                 </div><!-- End Service Item -->
 
@@ -341,8 +341,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Kenapa Andriyani Batik Jadi Pilihan ?</h2>
-            <p>Berikut beberapa alasan mengapa Andriyani Batik cocok dijadikan pilihan untuk usaha batik</p>
+            <h2>Kenapa Aruna Batik Nusantara Jadi Pilihan ?</h2>
+            <p>Berikut beberapa alasan mengapa Aruna Batik Nusantara cocok dijadikan pilihan untuk usaha batik</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -354,7 +354,7 @@
                         <span>01</span>
                         <h4><a href="#" class="stretched-link">Meminimalkan Biaya Operasional</a></h4>
                         <p>Dengan mengurangi pekerjaan manual, seperti perhitungan stok dan pencatatan laporan,
-                            Andriyani Batik membantu mengurangi kebutuhan tenaga kerja tambahan, sehingga lebih
+                            Aruna Batik Nusantara membantu mengurangi kebutuhan tenaga kerja tambahan, sehingga lebih
                             hemat biaya dalam usaha batik.
                         </p>
                     </div>
@@ -388,7 +388,7 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Pemilik Andriyani Batik</h2>
+            <h2>Pemilik Aruna Batik Nusantara</h2>
 
         </div><!-- End Section Title -->
 
@@ -398,14 +398,14 @@
 
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="member">
-                        <img src="asset/img/team/andriyani.png" class="img-fluid" alt="">
+                        <img src="asset/img/team/avatar2.png" class="img-fluid" alt="">
                         <div class="member-info">
                             <div class="member-info-content">
-                                <h4>andriyani_batik</h4>
+                                <h4>arunabatik</h4>
                                 <div class="social">
-                                    <a href="https://instagram.com/andriyani_batik"><i
+                                    <a href="https://instagram.com/arunabatik"><i
                                             class="bi bi-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/in/andriyani_batik"><i class="bi bi-linkedin"></i></a>
+                                    <a href="https://www.linkedin.com/in/arunabatik"><i class="bi bi-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -424,8 +424,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Yang Sering Ditanyakan Terkait Andriyani Batik</h2>
-            <p>Berikut hal yang sering ditanyakan mengenai program Andriyani Batik</p>
+            <h2>Yang Sering Ditanyakan Terkait Aruna Batik Nusantara</h2>
+            <p>Berikut hal yang sering ditanyakan mengenai program Aruna Batik Nusantara</p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -438,9 +438,9 @@
 
                         <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
                             <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Apa itu Andriyani Batik??</h3>
+                            <h3>Apa itu Aruna Batik Nusantara??</h3>
                             <div class="faq-content">
-                                <p>Andriyani Batik adalah sebuah sistem informasi sederhana yang dirancang khusus
+                                <p>Aruna Batik Nusantara adalah sebuah sistem informasi sederhana yang dirancang khusus
                                     untuk
                                     membantu UMKM di sektor batik dalam mengelola proses bisnis mereka, mulai dari
                                     penjualan, pembelian, pengelolaan persediaan, hingga pembuatan laporan keuangan
@@ -451,9 +451,9 @@
 
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                             <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Apakah Andriyani Batik bisa digunakan secara offline?</h3>
+                            <h3>Apakah Aruna Batik Nusantara bisa digunakan secara offline?</h3>
                             <div class="faq-content">
-                                <p>Andriyani Batik dapat diakses secara offline untuk pencatatan dasar, namun
+                                <p>Aruna Batik Nusantara dapat diakses secara offline untuk pencatatan dasar, namun
                                     beberapa fitur
                                     seperti pembaruan data real-time atau laporan terintegrasi mungkin memerlukan
                                     koneksi internet</p>
@@ -463,9 +463,9 @@
 
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
                             <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Apakah Andriyani Batik mendukung multi-user?</h3>
+                            <h3>Apakah Aruna Batik Nusantara mendukung multi-user?</h3>
                             <div class="faq-content">
-                                <p>Ya, Andriyani Batik mendukung penggunaan multi-user dengan pengaturan hak akses,
+                                <p>Ya, Aruna Batik Nusantara mendukung penggunaan multi-user dengan pengaturan hak akses,
                                     sehingga
                                     setiap karyawan dapat diberikan izin yang sesuai dengan perannya.</p>
                             </div>
@@ -474,19 +474,19 @@
 
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
                             <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Apakah ada pelatihan untuk menggunakan Andriyani Batik?</h3>
+                            <h3>Apakah ada pelatihan untuk menggunakan Aruna Batik Nusantara?</h3>
                             <div class="faq-content">
                                 <p>Ya, kami menyediakan panduan penggunaan dalam bentuk manual book untuk membantu
-                                    pengguna memahami cara kerja Andriyani Batik dengan cepat.</p>
+                                    pengguna memahami cara kerja Aruna Batik Nusantara dengan cepat.</p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
                         </div><!-- End Faq item-->
 
                         <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
                             <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Apakah memungkinkan jika Andriyani Batik digunakan selain disektor batik?</h3>
+                            <h3>Apakah memungkinkan jika Aruna Batik Nusantara digunakan selain disektor batik?</h3>
                             <div class="faq-content">
-                                <p>Ya, Andriyani Batik memungkinkan untuk digunakan di sektor lain selain batik,
+                                <p>Ya, Aruna Batik Nusantara memungkinkan untuk digunakan di sektor lain selain batik,
                                     tetapi mungkin memerlukan penyesuaian tertentu. </p>
                             </div>
                             <i class="faq-toggle bi bi-chevron-right"></i>
@@ -537,7 +537,7 @@
                     <div class="info-item d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-envelope"></i>
                         <h3>Email</h3>
-                        <p>OkwanFast@gmail.com</p>
+                        <p>kontak@arunabatik.com</p>
                     </div>
                 </div><!-- End Info Item -->
 
@@ -550,7 +550,7 @@
 
     </main>
     <div style="text-align: center; background-color: rgb(153, 206, 150); ">
-        <h5>Program Andriyani Batik Dibuat Oleh Mahasiswa Sistem Informasi Akuntansi</h5>
+        <h5>Program Aruna Batik Nusantara Dibuat Oleh Mahasiswa Sistem Informasi Akuntansi</h5>
         <h6>Universitas Bina Sarana Informatika</h6>
     </div>
 

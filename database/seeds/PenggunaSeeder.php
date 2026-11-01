@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class PenggunaSeeder extends Seeder
 {
@@ -12,23 +13,38 @@ class PenggunaSeeder extends Seeder
      */
     public function run()
     {
-        $existing = \App\Models\User::where('email', 'adminpa1@bsi.ac.id')->first();
-        if (!$existing) {
-            $pengguna = new \App\Models\User;
-            $pengguna->nama = "Administrator";
+        // Update user admin lama jika ada menjadi data dummy SIMARA
+        $existing = User::where('email', 'adminpa1@bsi.ac.id')
+            ->orWhere('username', 'admin')
+            ->first();
+
+        if ($existing) {
+            $existing->nama = "Administrator SIMARA";
+            $existing->username = "admin";
+            $existing->email = "admin@arunabatik.com";
+            $existing->roles = "PEMILIK";
+            $existing->password = Hash::make("admin123");
+            $existing->phone = "081234567890";
+            $existing->address = "Jl. Gajah Mada No. 88, Tegal Barat, Kota Tegal, Jawa Tengah 52113";
+            $existing->status = "ACTIVE";
+            $existing->nama_ibu = "Ibu Aruna";
+            $existing->pemilik = "PEMILIK";
+            $existing->save();
+            $this->command->info("User Admin SIMARA berhasil diperbarui");
+        } else {
+            $pengguna = new User;
+            $pengguna->nama = "Administrator SIMARA";
             $pengguna->username = "admin";
-            $pengguna->email = "adminpa1@bsi.ac.id"; 
-            $pengguna->roles = "PEMILIK"; 
-            $pengguna->password = Hash::make("admin"); 
-            $pengguna->phone = "081851851851"; 
-            $pengguna->address = "Jl Raya Jatiwaringin No. 101";
+            $pengguna->email = "admin@arunabatik.com";
+            $pengguna->roles = "PEMILIK";
+            $pengguna->password = Hash::make("admin123");
+            $pengguna->phone = "081234567890";
+            $pengguna->address = "Jl. Gajah Mada No. 88, Tegal Barat, Kota Tegal, Jawa Tengah 52113";
             $pengguna->status = "ACTIVE";
-            $pengguna->nama_ibu = "Admin";
+            $pengguna->nama_ibu = "Ibu Aruna";
             $pengguna->pemilik = "PEMILIK";
             $pengguna->save();
-            $this->command->info("User Admin berhasil diinsert");
-        } else {
-            $this->command->info("User Admin sudah ada");
+            $this->command->info("User Admin SIMARA berhasil dibuat");
         }
     }
 }

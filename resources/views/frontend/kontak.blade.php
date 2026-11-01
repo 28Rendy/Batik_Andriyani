@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Kontak & FAQ - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani'))
+@section('title', 'Kontak & FAQ - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara'))
 
 @section('content')
 <div class="page-header-banner">
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <h6 class="fw-bold mb-1">Email Resmi</h6>
-                        <p class="text-muted small mb-0">{{ \App\Models\SiteSetting::getSetting('email', 'info@batikandriyani.com') }}</p>
+                        <p class="text-muted small mb-0">{{ \App\Models\SiteSetting::getSetting('email', 'kontak@arunabatik.com') }}</p>
                     </div>
                 </div>
 

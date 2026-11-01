@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') . ' - Beranda')
+@section('title', \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') . ' - Beranda')
 
 @section('content')
 <!-- Hero Carousel Dinamis -->
@@ -34,7 +34,7 @@
                 <div class="carousel-item active" style="min-height: 480px; background: #5d4037;">
                     <div class="container h-100 d-flex align-items-center" style="min-height: 480px;">
                         <div class="col-lg-8 text-white py-5">
-                            <h1 class="display-4 fw-bold font-serif">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</h1>
+                            <h1 class="display-4 fw-bold font-serif">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}</h1>
                             <p class="lead">{{ \App\Models\SiteSetting::getSetting('tagline', 'Batik Tulis Khas Nusantara') }}</p>
                             <a href="{{ route('frontend.produk') }}" class="btn btn-warning btn-lg px-4 rounded-pill">Lihat Produk</a>
                         </div>
@@ -156,7 +156,7 @@
     <div class="container py-4">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="text-uppercase section-subtitle d-block mb-1">Karya & Dokumentasi</span>
-            <h2 class="font-serif fw-bold">Galeri Batik Andriyani</h2>
+            <h2 class="font-serif fw-bold">Galeri Aruna Batik Nusantara</h2>
             <p class="text-muted">Potret proses pembuatan, motif, dan koleksi istimewa kami</p>
         </div>
 
@@ -268,7 +268,7 @@
         <h2 class="font-serif fw-bold mb-3 text-white" style="color: #ffffff !important;">Ingin Berkonsultasi atau Memesan Motif Batik Khusus?</h2>
         <p class="lead mb-4 mx-auto text-white" style="max-width: 600px; color: #f5ede4 !important;">Kami melayani pesanan batik tulis seragam kantor, keluarga, acara pernikahan, maupun koleksi pribadi.</p>
         @php $wa = \App\Models\SiteSetting::getSetting('whatsapp', '628123456789'); @endphp
-        <a href="https://wa.me/{{ $wa }}?text=Halo%20Batik%20Andriyani,%20saya%20ingin%20konsultasi%20pesanan%20batik." target="_blank" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow">
+        <a href="https://wa.me/{{ $wa }}?text=Halo%20Aruna%20Batik,%20saya%20ingin%20konsultasi%20pesanan%20batik." target="_blank" class="btn btn-success btn-lg rounded-pill px-5 fw-bold shadow">
             <i class="bi bi-whatsapp me-2"></i> Hubungi Kami via WhatsApp
         </a>
     </div>

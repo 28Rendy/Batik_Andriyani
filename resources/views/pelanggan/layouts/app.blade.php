@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Portal Pelanggan') - {{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</title>
+    <title>@yield('title', 'Portal Pelanggan') - {{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}</title>
 
     <link href="{{ asset('asset/img/favicon.png') }}" rel="icon">
     <!-- Fonts -->
@@ -97,7 +97,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 shadow-sm" style="background-color: #3e2723 !important;">
         <div class="container">
             <a class="navbar-brand fw-bold font-serif fs-4" href="{{ route('frontend.home') }}">
-                <i class="fas fa-gem text-warning me-2"></i>{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}
+                <i class="fas fa-gem text-warning me-2"></i>{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}
             </a>
             <div class="d-flex align-items-center gap-3">
                 <a href="{{ route('frontend.produk') }}" class="btn btn-outline-light btn-sm rounded-pill px-3">

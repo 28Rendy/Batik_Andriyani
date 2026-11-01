@@ -1,11 +1,11 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Tentang Kami - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani'))
+@section('title', 'Tentang Kami - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara'))
 
 @section('content')
 <div class="page-header-banner">
     <div class="container">
-        <h1 class="display-5 fw-bold font-serif mb-2">{{ \App\Models\SiteSetting::getSetting('tentang_judul', 'Tentang Batik Andriyani') }}</h1>
+        <h1 class="display-5 fw-bold font-serif mb-2">{{ \App\Models\SiteSetting::getSetting('tentang_judul', 'Tentang Aruna Batik Nusantara') }}</h1>
         <p class="lead mb-0 text-white-50">Menjaga warisan luhur budaya nusantara lewat tiap helai kain batik tulis autentik</p>
     </div>
 </div>
@@ -14,7 +14,7 @@
     <div class="row g-5 align-items-center mb-5">
         <div class="col-lg-6" data-aos="fade-right">
             <span class="text-uppercase section-subtitle d-block mb-1">Cerita & Identitas Kami</span>
-            <h2 class="font-serif fw-bold display-6 mb-4">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</h2>
+            <h2 class="font-serif fw-bold display-6 mb-4">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}</h2>
             <div class="text-secondary lh-lg mb-4" style="font-size: 16px;">
                 {!! nl2br(e(\App\Models\SiteSetting::getSetting('tentang_isi', \App\Models\SiteSetting::getSetting('deskripsi_toko')))) !!}
             </div>

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', $berita->title . ' - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani'))
+@section('title', $berita->title . ' - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara'))
 
 @section('content')
 <div class="container py-5" style="margin-top: 80px;">

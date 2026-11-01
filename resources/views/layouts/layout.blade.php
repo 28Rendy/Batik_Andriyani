@@ -185,7 +185,7 @@
                 <div class="sidebar-brand-icon rotate-n-0">
                     <img style="border-radius: 15px" src="{{ asset('asset/img/logo_batik.png') }}" width="60">
                 </div>
-                <div class="sidebar-brand-text mx-2 text-light ">Andriyani Batik</div>
+                <div class="sidebar-brand-text mx-2 text-light ">SIMARA</div>
             </a>
 
             <!-- Divider -->
@@ -415,7 +415,7 @@
                         <div class="card-header bg-primary text-white text-center">
                             <i class="fas fa-user"></i> <!-- Add appropriate icon -->
                             <strong>Welcome Back.... !!!</strong>
-                            <i>{{ Auth::user()->nama ?? 'Guest' }}</i> di website Andriyani Batik
+                            <i>{{ Auth::user()->nama ?? 'Guest' }}</i> di website SIMARA
                         </div>
 
                     </div>
@@ -492,7 +492,7 @@
             <footer class="sticky-footer bg-secondary">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span class="text-light">Copyright &copy; OkwanFast ~ Andriyani Batik 2025</span>
+                        <span class="text-light">Copyright &copy; OkwanFast ~ SIMARA 2025</span>
                     </div>
                 </div>
             </footer>

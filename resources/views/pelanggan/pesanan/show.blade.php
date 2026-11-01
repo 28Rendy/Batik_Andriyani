@@ -98,7 +98,7 @@
             <p class="small text-muted mb-3">Hubungi tim customer service kami untuk konfirmasi atau pertanyaan pengiriman.</p>
             @php
                 $wa = \App\Models\SiteSetting::getSetting('whatsapp', '628123456789');
-                $pesanWa = "Halo Admin Batik Andriyani, saya ingin menanyakan status pesanan saya: #ORD-" . str_pad($pesanan->id, 5, '0', STR_PAD_LEFT);
+                $pesanWa = "Halo Admin Aruna Batik Nusantara, saya ingin menanyakan status pesanan saya: #ORD-" . str_pad($pesanan->id, 5, '0', STR_PAD_LEFT);
             @endphp
             <a href="https://wa.me/{{ $wa }}?text={{ urlencode($pesanWa) }}" target="_blank" class="btn btn-success rounded-pill w-100 fw-bold">
                 <i class="fab fa-whatsapp me-2"></i> Chat CS Toko

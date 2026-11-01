@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label><strong>Nama Toko</strong></label>
-                            <input type="text" name="nama_toko" class="form-control" value="{{ $settings['nama_toko']->value ?? 'Batik Andriyani' }}" required>
+                            <input type="text" name="nama_toko" class="form-control" value="{{ $settings['nama_toko']->value ?? 'Aruna Batik Nusantara' }}" required>
                         </div>
                         <div class="form-group">
                             <label><strong>Tagline / Slogan</strong></label>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Teks Footer / Hak Cipta</strong></label>
-                            <input type="text" name="footer_teks" class="form-control" value="{{ $settings['footer_teks']->value ?? '© 2025 Batik Andriyani. Hak cipta dilindungi.' }}">
+                            <input type="text" name="footer_teks" class="form-control" value="{{ $settings['footer_teks']->value ?? '© 2025 Aruna Batik Nusantara. Hak cipta dilindungi.' }}">
                         </div>
                     </div>
                 </div>
@@ -81,11 +81,11 @@
                         </div>
                         <div class="form-group">
                             <label><strong>Instagram (URL / Username)</strong></label>
-                            <input type="text" name="instagram" class="form-control" value="{{ $settings['instagram']->value ?? '' }}" placeholder="https://instagram.com/batikandriyani">
+                            <input type="text" name="instagram" class="form-control" value="{{ $settings['instagram']->value ?? '' }}" placeholder="https://instagram.com/arunabatik">
                         </div>
                         <div class="form-group">
                             <label><strong>Facebook (URL)</strong></label>
-                            <input type="text" name="facebook" class="form-control" value="{{ $settings['facebook']->value ?? '' }}" placeholder="https://facebook.com/batikandriyani">
+                            <input type="text" name="facebook" class="form-control" value="{{ $settings['facebook']->value ?? '' }}" placeholder="https://facebook.com/arunabatik">
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label><strong>Judul Bagian Tentang</strong></label>
-                            <input type="text" name="tentang_judul" class="form-control" value="{{ $settings['tentang_judul']->value ?? 'Tentang Batik Andriyani' }}">
+                            <input type="text" name="tentang_judul" class="form-control" value="{{ $settings['tentang_judul']->value ?? 'Tentang Aruna Batik Nusantara' }}">
                         </div>
                         <div class="form-group">
                             <label><strong>Isi Lengkap Tentang Kami</strong></label>

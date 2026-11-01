@@ -130,7 +130,7 @@ class PelangganController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('pelanggan.dashboard')->with('success', 'Pendaftaran akun pelanggan berhasil! Selamat datang di Batik Andriyani.');
+        return redirect()->route('pelanggan.dashboard')->with('success', 'Pendaftaran akun pelanggan berhasil! Selamat datang di Aruna Batik Nusantara.');
     }
 }
 

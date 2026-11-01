@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', 'Galeri Foto - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani'))
+@section('title', 'Galeri Foto - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara'))
 
 @section('content')
 <div class="page-header-banner">

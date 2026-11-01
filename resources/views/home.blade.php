@@ -12,7 +12,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        Anda Telah Login Ke Dalam Sistem Informasi Andriyani Batik Indonesia
+                        Anda Telah Login Ke Dalam SIMARA (Sistem Informasi Manajemen Aruna Batik Nusantara)
                     </div>
                 </div>
             </div>

@@ -150,11 +150,11 @@
         <img src="asset/img/logo_batik.png" alt="Logo Perusahaan" class="logo">
         <div class="company-info">
 
-            <div class="company-name">ANDRIYANI BATIK TEGAL</div>
+            <div class="company-name">ARUNA BATIK NUSANTARA</div>
             <div class="company-details">
-                Alamat: Jl. Bengle Kidul, Bengle, Kec. Talang, Kabupaten Tegal, Jawa Tengah 52193<br>
-                WhatsApp: +62 853-8551-3443<br>
-                Email: andriyanibatik46@gmail.com
+                Alamat: Jl. Gajah Mada No. 88, Tegal Barat, Kota Tegal, Jawa Tengah 52113<br>
+                WhatsApp: +62 812-3456-7890<br>
+                Email: kontak@arunabatik.com
             </div>
         </div>
     </div>

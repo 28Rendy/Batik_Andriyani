@@ -1,11 +1,11 @@
-# 🎨 Batik Andriyani - Sistem Informasi Penjualan & CMS Website
+# 🎨 SIMARA - Sistem Informasi Manajemen Aruna Batik Nusantara
 
 <p align="center">
-  <img src="public/asset/img/logo_batik.png" alt="Logo Batik Andriyani" width="160" style="border-radius: 15px;">
+  <img src="public/asset/img/logo_batik.png" alt="Logo Aruna Batik Nusantara" width="160" style="border-radius: 15px;">
 </p>
 
 <p align="center">
-  <strong>Website E-Commerce & Sistem Manajemen Konten (CMS) Batik Tulis Nusantara</strong>
+  <strong>Platform E-Commerce, Katalog Digital, & Sistem Informasi Manajemen Toko Batik Tulis Nusantara</strong>
 </p>
 
 <p align="center">
@@ -18,41 +18,41 @@
 
 ---
 
-## 📌 Tentang Proyek
+## 📌 Tentang SIMARA
 
-**Batik Andriyani** adalah aplikasi berbasis web yang mengintegrasikan **Katalog Penjualan Online Publik**, **Portal Pelanggan**, serta **Sistem Informasi Manajemen & CMS Toko Batik**. Dibuat untuk mempermudah operasional UMKM batik tulis mulai dari pencatatan inventaris, manajemen pesanan online, rekapitulasi keuangan kas, hingga publikasi konten promosi.
+**SIMARA (Sistem Informasi Manajemen Aruna Batik Nusantara)** adalah aplikasi berbasis web terpadu yang dirancang untuk mendukung operasional bisnis UMKM batik tulis di Kota Tegal, Jawa Tengah. Aplikasi ini menggabungkan **Etalase E-Commerce Publik**, **Portal Layanan Pelanggan**, serta **Panel Back-Office Manajemen (CMS, Inventaris, & Laporan Keuangan)** dalam satu ekosistem digital yang efisien dan aman.
 
 ---
 
 ## ✨ Fitur-Fitur Utama
 
 ### 🛍️ 1. Halaman Publik (Frontend)
-- **Beranda Interaktif**: Hero slider banner dinamis, etalase batik unggulan, profil filosofi usaha, dan integrasi pemesanan WhatsApp.
-- **Top Navigation Bar Responsif**: Dilengkapi tombol scroll panah kiri/kanan & indikator baris scroll agar menu tetap rapi di semua resolusi layar.
+- **Beranda Interaktif**: Banner hero slider dinamis, etalase koleksi batik unggulan, profil filosofi usaha, dan integrasi pemesanan WhatsApp langsung.
+- **Top Navigation Bar Responsif**: Dilengkapi tombol scroll panah kiri/kanan & indikator baris scroll agar menu tetap rapi di semua resolusi layar tanpa zoom out.
 - **Katalog Produk Lengkap**:
-  - Filter kategori (*Batik Jadi / Produksi Sendiri* vs *Kain Setengah Jadi*).
-  - Fitur pencarian produk real-time berdasarkan nama batik atau motif.
-- **Galeri Foto & Berita Batik**: Dokumentasi motif karya pengrajin serta artikel edukasi budaya batik.
-- **Tentang Kami & Kontak / FAQ**: Accordion interaktif tanya-jawab dan peta/kontak toko.
+  - Filter kategori (*Batik Siap Pakai / Produksi Sendiri* vs *Kain Batik Setengah Jadi*).
+  - Fitur pencarian produk real-time berdasarkan kata kunci nama produk atau motif.
+- **Galeri Foto & Artikel Budaya Batik**: Dokumentasi motif karya pembatik serta artikel edukasi pelestarian batik nusantara.
+- **Tentang Kami & FAQ Interaktif**: Accordion tanya-jawab interaktif dan informasi kontak galeri.
 
 ### 👤 2. Portal Pelanggan
-- **Registrasi & Login Akun**: Pendaftaran mandiri pelanggan.
-- **Dashboard Pesanan**: Memantau status pesanan (Menunggu Pembayaran, Diproses, Dikirim, Selesai).
-- **Pengaturan Profil**: Pengelolaan data diri, alamat pengiriman, dan upload foto profil.
+- **Registrasi & Login Akun Pelanggan**: Pendaftaran mandiri pelanggan.
+- **Dashboard Pesanan**: Memantau status pesanan (Menunggu Konfirmasi, Diproses, Dikirim, Selesai).
+- **Pengaturan Profil**: Pengelolaan data diri, alamat pengiriman, dan upload foto profil pelanggan.
 
-### ⚙️ 3. Backend Admin (Panel Manajemen)
-- **Active State Indicator Sidebar**: Navigasi sidebar dengan blok warna dinamis bergradien emas-cokelat yang menandakan posisi menu dan sub-menu yang sedang aktif.
+### ⚙️ 3. Backend Admin (Panel Manajemen SIMARA)
+- **Active State Indicator Sidebar**: Navigasi sidebar dengan blok warna dinamis bergradien emas-cokelat batik yang menandakan posisi menu dan sub-menu yang sedang aktif.
 - **Data Barang & Kategori**: Manajemen inventaris kain setengah jadi, produksi sendiri, jenis kain, motif, dan ukuran.
-- **Transaksi & Penjualan**: Pencatatan transaksi penjualan kasir/toko.
-- **Keuangan (Buku Kas)**: Pencatatan pengeluaran kas operasional toko.
-- **Kelola Pesanan Online**: Konfirmasi pembayaran dan pembaruan resi / status pesanan dari pelanggan.
+- **Transaksi & Penjualan**: Pencatatan transaksi kasir toko.
+- **Keuangan & Pengeluaran**: Pencatatan pengeluaran kas operasional toko.
+- **Kelola Pesanan Online**: Konfirmasi pembayaran dan pembaruan nomor resi / status pesanan dari pelanggan.
 - **CMS (Content Management System)**:
   - Kelola Identitas Toko, Logo, Kontak & Media Sosial.
   - Kelola Hero Slider (Banner Beranda).
   - Kelola Galeri Foto & Album.
   - Kelola Tanya Jawab (FAQ).
   - Kelola Berita & Artikel Edukasi.
-- **Laporan**: Rekapitulasi laporan penjualan dan pengeluaran.
+- **Laporan**: Rekapitulasi laporan penjualan dan pengeluaran kas berformat cetak / PDF.
 
 ---
 
@@ -104,15 +104,17 @@ cp .env.example .env
 
 Buka file `.env` di text editor (VS Code, Notepad, dll), lalu sesuaikan konfigurasi database:
 ```env
+APP_NAME=SIMARA
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=andriyani_batik
+DB_DATABASE=simara_batik
 DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-> **Catatan:** Buat database kosong bernama `andriyani_batik` di **phpMyAdmin** (`http://localhost/phpmyadmin`) atau HeidiSQL terlebih dahulu.
+> **Catatan:** Buat database kosong bernama `simara_batik` di **phpMyAdmin** (`http://localhost/phpmyadmin`) atau HeidiSQL terlebih dahulu.
 
 ---
 
@@ -154,12 +156,12 @@ Buka browser dan akses alamat berikut:
 
 ## 🔑 Akun Demo Default
 
-Setelah menjalankan `php artisan migrate --seed`, akun berikut siap digunakan untuk login:
+Setelah menjalankan seeder, akun berikut siap digunakan untuk login dan pengujian:
 
 | Role / Akses | Email / Username | Password | Keterangan |
 | :--- | :--- | :--- | :--- |
-| **Admin / Pemilik** | `adminpa1@bsi.ac.id` *(atau username: `admin`)* | `admin` | Akses penuh dashboard, barang, keuangan, CMS, dan laporan |
-| **Lupa Password** | `/forgot` | - | Menggunakan verifikasi email & Nama Ibu: `Admin` |
+| **Admin / Pemilik** | `admin@arunabatik.com` *(atau username: `admin`)* | `admin123` | Akses penuh dashboard, barang, keuangan, CMS, dan laporan |
+| **Lupa Password** | `/forgot` | - | Verifikasi dengan email admin & Nama Ibu: `Ibu Aruna` |
 
 ---
 
@@ -205,7 +207,7 @@ Batik_Andriyani/
 │   └── Models/              # Model Eloquent Database
 ├── database/
 │   ├── migrations/          # Struktur skema tabel database
-│   └── seeds/               # Data seeder otomatis
+│   └── seeds/               # Data seeder otomatis (Admin, CMS, Batik)
 ├── public/
 │   ├── asset/               # CSS, JS, Vendor (Bootstrap, SB-Admin, FontAwesome)
 │   └── photos/              # Folder penyimpanan foto produk, galeri, slider
@@ -223,8 +225,8 @@ Batik_Andriyani/
 ---
 
 ## 📄 Lisensi
-Proyek ini dikembangkan untuk keperluan akademik dan operasional UMKM **Andriyani Batik Indonesia**.
+Proyek **SIMARA** ini dikembangkan untuk keperluan akademik, portofolio sumber terbuka (*open-source*), dan operasional UMKM **Aruna Batik Nusantara (Tegal, Jawa Tengah)**.
 
 <p align="center">
-  Dibuat dengan ❤️ oleh Tim Proyek Batik Andriyani
+  Dibuat dengan ❤️ oleh Tim Pengembang SIMARA
 </p>

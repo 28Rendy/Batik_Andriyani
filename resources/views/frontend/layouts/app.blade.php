@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>@yield('title', \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani')) - {{ \App\Models\SiteSetting::getSetting('tagline', 'Batik Tulis Khas Nusantara') }}</title>
+    <title>@yield('title', \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara')) - {{ \App\Models\SiteSetting::getSetting('tagline', 'Batik Tulis Khas Nusantara') }}</title>
     <meta name="description" content="{{ \App\Models\SiteSetting::getSetting('deskripsi_toko', 'Batik Tulis Berkualitas') }}">
 
     <!-- Favicon -->
@@ -374,7 +374,7 @@
                 @else
                     <i class="fas fa-gem text-warning fs-3 me-2"></i>
                 @endif
-                <h1 class="sitename">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</h1>
+                <h1 class="sitename">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}</h1>
             </a>
 
             <!-- Menu Navigasi Multi-Page -->
@@ -461,7 +461,7 @@
     @php
         $wa = \App\Models\SiteSetting::getSetting('whatsapp', '628123456789');
     @endphp
-    <a href="https://wa.me/{{ $wa }}?text=Halo%20Batik%20Andriyani,%20saya%20tertarik%20dengan%20produk%20batik%20Anda." target="_blank" class="floating-wa shadow" title="Chat WhatsApp">
+    <a href="https://wa.me/{{ $wa }}?text=Halo%20Aruna%20Batik,%20saya%20tertarik%20dengan%20produk%20batik%20Anda." target="_blank" class="floating-wa shadow" title="Chat WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
@@ -470,7 +470,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <h4 class="font-serif">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani') }}</h4>
+                    <h4 class="font-serif">{{ \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara') }}</h4>
                     <p class="small text-muted mb-3">{{ \App\Models\SiteSetting::getSetting('deskripsi_toko', 'Batik Tulis Khas Nusantara Berkualitas Tinggi.') }}</p>
                     <p class="small mb-1"><i class="fas fa-map-marker-alt me-2 text-warning"></i> {{ \App\Models\SiteSetting::getSetting('alamat', 'Indonesia') }}</p>
                     <p class="small mb-1"><i class="fas fa-clock me-2 text-warning"></i> {{ \App\Models\SiteSetting::getSetting('jam_buka', '08.00 - 17.00') }}</p>
@@ -505,7 +505,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h4>Hubungi Kami</h4>
                     <p class="small mb-2"><i class="bi bi-whatsapp me-2 text-success"></i> WhatsApp: <a href="https://wa.me/{{ $wa }}" target="_blank">+{{ $wa }}</a></p>
-                    <p class="small mb-3"><i class="bi bi-envelope me-2 text-danger"></i> Email: {{ \App\Models\SiteSetting::getSetting('email', 'info@batikandriyani.com') }}</p>
+                    <p class="small mb-3"><i class="bi bi-envelope me-2 text-danger"></i> Email: {{ \App\Models\SiteSetting::getSetting('email', 'kontak@arunabatik.com') }}</p>
                     
                     <div class="d-flex gap-2">
                         @if (\App\Models\SiteSetting::getSetting('instagram'))
@@ -520,7 +520,7 @@
 
             <hr class="border-secondary mt-5 mb-4">
             <div class="text-center small text-muted">
-                {{ \App\Models\SiteSetting::getSetting('footer_teks', '© 2025 Batik Andriyani. Hak cipta dilindungi.') }}
+                {{ \App\Models\SiteSetting::getSetting('footer_teks', '© 2025 Aruna Batik Nusantara. Hak cipta dilindungi.') }}
             </div>
         </div>
     </footer>

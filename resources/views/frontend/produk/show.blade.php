@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', $produk->nama_produk . ' - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Batik Andriyani'))
+@section('title', $produk->nama_produk . ' - ' . \App\Models\SiteSetting::getSetting('nama_toko', 'Aruna Batik Nusantara'))
 
 @section('content')
 <div class="container py-5" style="margin-top: 80px;">
@@ -82,7 +82,7 @@
 
                 <!-- Tombol Tanya via WhatsApp -->
                 @php
-                    $pesanWa = "Halo Batik Andriyani, saya ingin bertanya tentang produk: " . $produk->nama_produk . " (Rp " . number_format($produk->harga, 0, ',', '.') . ")";
+                    $pesanWa = "Halo Aruna Batik Nusantara, saya ingin bertanya tentang produk: " . $produk->nama_produk . " (Rp " . number_format($produk->harga, 0, ',', '.') . ")";
                 @endphp
                 <a href="https://wa.me/{{ $waNumber }}?text={{ urlencode($pesanWa) }}" target="_blank" class="btn btn-outline-success btn-lg rounded-pill fw-bold py-3">
                     <i class="bi bi-whatsapp me-2"></i> Tanya Produk via WhatsApp
