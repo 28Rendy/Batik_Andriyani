@@ -13,7 +13,7 @@
   <a href="https://php.net"><img src="https://img.shields.io/badge/PHP-7.4%20|%208.x-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP"></a>
   <a href="https://mariadb.org"><img src="https://img.shields.io/badge/Database-MySQL%20%7C%20MariaDB-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"></a>
   <a href="https://getbootstrap.com"><img src="https://img.shields.io/badge/Frontend-Bootstrap%205-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap 5"></a>
-  <a href="https://github.com/28Rendy/Batik_Andriyani"><img src="https://img.shields.io/badge/Repo-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
+  <a href="https://github.com/28Rendy/SIMARA-Sistem_Informasi_Manajemen_Aruna_Batik_Nusantara"><img src="https://img.shields.io/badge/Repo-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
 </p>
 
 ---
@@ -75,8 +75,8 @@ Ikuti langkah mudah di bawah ini untuk menjalankan proyek di laptop Anda (Larago
 Buka terminal (Git Bash / PowerShell / Command Prompt), arahkan ke folder web server Anda (`C:\laragon\www\` atau `C:\xampp\htdocs\`), lalu jalankan:
 
 ```bash
-git clone https://github.com/28Rendy/Batik_Andriyani.git
-cd Batik_Andriyani
+git clone https://github.com/28Rendy/SIMARA-Sistem_Informasi_Manajemen_Aruna_Batik_Nusantara.git
+cd SIMARA-Sistem_Informasi_Manajemen_Aruna_Batik_Nusantara
 ```
 
 ---
@@ -201,7 +201,7 @@ php artisan cache:clear
 ## 📁 Struktur Direktori Penting
 
 ```text
-Batik_Andriyani/
+Simara_Batik/
 ├── app/
 │   ├── Http/Controllers/    # Controller (Frontend, Admin, Pelanggan, Auth)
 │   └── Models/              # Model Eloquent Database

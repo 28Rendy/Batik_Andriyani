@@ -53,7 +53,7 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="http://localhost:8000/login">Masuk</a>
+            <a class="btn-getstarted" href="{{ route('login') }}">Masuk</a>
 
         </div>
     </header>
@@ -520,7 +520,7 @@
                     <div class="info-item d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-geo-alt"></i>
                         <h3>Alamat</h3>
-                        <p>Jalan AR Hakim, Kota Tegal, 52123</p>
+                        <p>Jl. Gajah Mada No. 88, Tegal Barat, Kota Tegal, Jawa Tengah 52113</p>
                     </div>
                 </div><!-- End Info Item -->
 
@@ -529,7 +529,7 @@
                         class="info-item d-flex flex-column justify-content-center align-items-center info-item-borders">
                         <i class="bi bi-telephone"></i>
                         <h3>WhatsApp</h3>
-                        <p>+62 857 1325 2536</p>
+                        <p>+62 812-3456-7890</p>
                     </div>
                 </div><!-- End Info Item -->
 

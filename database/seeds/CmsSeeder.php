@@ -34,9 +34,9 @@ class CmsSeeder extends Seeder
 
         // ===== HERO SLIDERS =====
         $sliders = [
-            ['judul' => 'Selamat Datang di Aruna Batik',     'deskripsi' => 'Temukan koleksi batik tulis premium dengan motif khas pesisiran dan Nusantara', 'gambar' => 'asset/img/about.jpg', 'urutan' => 1, 'aktif' => true],
-            ['judul' => 'Koleksi Mahakarya Eksklusif',       'deskripsi' => 'Batik tulis dengan bahan sutra & katun primissima serta pewarna alami berkualitas tinggi', 'gambar' => 'asset/img/about.jpg', 'urutan' => 2, 'aktif' => true],
-            ['judul' => 'Layanan Batik Custom & Seragam',     'deskripsi' => 'Melayani pembuatan batik khusus instansi, keluarga, dan motif personal pilihan Anda', 'gambar' => 'asset/img/about.jpg', 'urutan' => 3, 'aktif' => true],
+            ['judul' => 'Selamat Datang di Aruna Batik',     'deskripsi' => 'Temukan koleksi batik tulis premium dengan motif khas pesisiran dan Nusantara', 'gambar' => 'photos/slider_1.png', 'urutan' => 1, 'aktif' => true],
+            ['judul' => 'Koleksi Mahakarya Eksklusif',       'deskripsi' => 'Batik tulis dengan bahan sutra & katun primissima serta pewarna alami berkualitas tinggi', 'gambar' => 'photos/slider_2.png', 'urutan' => 2, 'aktif' => true],
+            ['judul' => 'Layanan Batik Custom & Seragam',     'deskripsi' => 'Melayani pembuatan batik khusus instansi, keluarga, dan motif personal pilihan Anda', 'gambar' => 'photos/slider_3.png', 'urutan' => 3, 'aktif' => true],
         ];
 
         foreach ($sliders as $s) {

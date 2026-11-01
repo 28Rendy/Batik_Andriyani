@@ -121,7 +121,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u1->id,
                 'stok' => 15,
                 'harga' => 450000,
-                'foto' => '1748165093_blueHarmony.png',
+                'foto' => 'photos/batik_sekar_jagad.png',
             ],
             [
                 'kode_produk' => '002',
@@ -131,7 +131,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u1->id,
                 'stok' => 10,
                 'harga' => 375000,
-                'foto' => '1748165673_blazingBlossoms.png',
+                'foto' => 'photos/batik_ambringan.png',
             ],
             [
                 'kode_produk' => '003',
@@ -141,7 +141,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u2->id,
                 'stok' => 8,
                 'harga' => 650000,
-                'foto' => '1748166258_jawa2.png',
+                'foto' => 'photos/batik_buketan.png',
             ],
             [
                 'kode_produk' => '004',
@@ -151,7 +151,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u3->id,
                 'stok' => 12,
                 'harga' => 320000,
-                'foto' => '1750513963_D1ng7o7Tcx.png',
+                'foto' => 'photos/batik_suluran.png',
             ],
         ];
 
@@ -174,7 +174,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u1->id,
                 'stok' => 20,
                 'harga' => 250000,
-                'foto' => '1750514045_opa4UbJMsa.png',
+                'foto' => 'photos/batik_sekar_jagad.png',
             ],
             [
                 'kode_produk' => 'SJ-002',
@@ -184,7 +184,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u3->id,
                 'stok' => 14,
                 'harga' => 190000,
-                'foto' => '1750514221_krIFSBWEuD.png',
+                'foto' => 'photos/batik_buketan.png',
             ],
             [
                 'kode_produk' => 'SJ-003',
@@ -194,7 +194,7 @@ class BatikDataSeeder extends Seeder
                 'ukuran_id' => $u2->id,
                 'stok' => 25,
                 'harga' => 175000,
-                'foto' => '1750514283_AIsuApsGTr.png',
+                'foto' => 'photos/batik_ambringan.png',
             ],
         ];
 
@@ -328,24 +328,24 @@ class BatikDataSeeder extends Seeder
         // ==========================================
         $galeris = [
             [
-                'judul' => 'Batik Motif Blue Harmony Tegal',
-                'deskripsi' => 'Corak batik tulis pesisir dengan paduan warna biru dan motif bunga yang menawan.',
-                'gambar' => 'photos/1748165093_blueHarmony.png',
-                'urutan' => 4,
+                'judul' => 'Mahakarya Batik Sekar Jagad',
+                'deskripsi' => 'Corak batik tulis pesisir dengan paduan warna menawan dan motif bunga klasik harmonis.',
+                'gambar' => 'photos/batik_sekar_jagad.png',
+                'urutan' => 1,
                 'aktif' => true,
             ],
             [
-                'judul' => 'Proses Canting & Pewarnaan Blazing',
-                'deskripsi' => 'Sentuhan tangan pengrajin terampil menghasilkan detail warna merah hangat membara.',
-                'gambar' => 'photos/1748165673_blazingBlossoms.png',
-                'urutan' => 5,
+                'judul' => 'Keanggunan Corak Ambringan',
+                'deskripsi' => 'Sentuhan tangan pengrajin terampil menghasilkan detail warna lembut penuh filosofi luhur.',
+                'gambar' => 'photos/batik_ambringan.png',
+                'urutan' => 2,
                 'aktif' => true,
             ],
             [
-                'judul' => 'Karya Seni Batik Etnik Klasik',
-                'deskripsi' => 'Pesona warisan luhur batik nusantara dengan detail motif geometris penuh filosofi.',
-                'gambar' => 'photos/1748166258_jawa2.png',
-                'urutan' => 6,
+                'judul' => 'Pesona Batik Buketan Modern',
+                'deskripsi' => 'Pesona warisan luhur batik nusantara dengan detail motif kontemporer penuh keindahan.',
+                'gambar' => 'photos/batik_buketan.png',
+                'urutan' => 3,
                 'aktif' => true,
             ],
         ];
